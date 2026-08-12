@@ -3,251 +3,836 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>Yantong (Kelly) Chen — Biostatistician</title>
+
 <meta name="description" content="Yantong (Kelly) Chen is a biostatistician working in cancer epidemiology, genomic data analysis, and genetic risk prediction at the Slone Epidemiology Center, Boston University.">
+
 <meta property="og:title" content="Yantong (Kelly) Chen — Biostatistician">
 <meta property="og:description" content="Biostatistics, cancer epidemiology, and genomic data analysis.">
 <meta property="og:type" content="website">
+
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='11' fill='%234A2F6B'/><circle cx='20' cy='13' r='5' fill='%23D9628E'/></svg>">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300&display=swap" rel="stylesheet">
+
 <style>
-  :root{
-    --glass:#F6F4F8;
-    --glass-deep:#EEEAF3;
-    --ink:#191527;
-    --stroma:#615A73;
-    --rule:#E1DCE9;
-    --hema:#4A2F6B;
-    --hema-soft:#9A85B4;
-    --eosin:#D9628E;
-    --eosin-ink:#A83A66;
-    --eosin-wash:#F6DDE6;
-    --max:1080px;
+
+:root{
+  --glass:#F6F4F8;
+  --glass-deep:#EEEAF3;
+  --ink:#191527;
+  --stroma:#615A73;
+  --rule:#E1DCE9;
+  --hema:#4A2F6B;
+  --hema-soft:#9A85B4;
+  --eosin:#D9628E;
+  --eosin-ink:#A83A66;
+  --eosin-wash:#F6DDE6;
+  --max:1080px;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--glass);
+  color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,sans-serif;
+  font-size:16.5px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+a{
+  color:var(--eosin-ink);
+  text-decoration:none;
+  border-bottom:1px solid var(--eosin-wash);
+  transition:border-color .2s;
+}
+
+a:hover{
+  border-color:var(--eosin);
+}
+
+:focus-visible{
+  outline:2px solid var(--hema);
+  outline-offset:3px;
+  border-radius:2px;
+}
+
+.wrap{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:0 28px;
+}
+
+
+/* ---------- shared type ---------- */
+
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:11.5px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--hema-soft);
+}
+
+.display{
+  font-family:"Newsreader",Georgia,serif;
+  font-weight:300;
+  letter-spacing:-.015em;
+  line-height:1.08;
+}
+
+.lede{
+  font-size:clamp(17px,1.9vw,20px);
+  color:var(--stroma);
+  max-width:60ch;
+}
+
+
+/* ---------- nav ---------- */
+
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:color-mix(in srgb,var(--glass) 88%,transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule);
+}
+
+.topbar .wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:58px;
+  gap:20px;
+}
+
+.mark{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:12.5px;
+  letter-spacing:.08em;
+  color:var(--ink);
+  border:0;
+}
+
+.mark b{
+  color:var(--eosin-ink);
+  font-weight:500;
+}
+
+.navlinks{
+  display:flex;
+  gap:22px;
+  flex-wrap:wrap;
+}
+
+.navlinks a{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--stroma);
+  border:0;
+  padding-bottom:2px;
+  border-bottom:1px solid transparent;
+}
+
+.navlinks a:hover{
+  color:var(--ink);
+  border-bottom-color:var(--eosin);
+}
+
+
+/* ---------- hero ---------- */
+
+.hero{
+  padding:88px 0 72px;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 270px;
+  gap:64px;
+  align-items:center;
+}
+
+.hero-text{
+  min-width:0;
+}
+
+.hero h1{
+  font-size:clamp(46px,7.4vw,84px);
+  margin:16px 0 0;
+}
+
+.hero h1 em{
+  font-style:italic;
+  color:var(--hema);
+  font-weight:300;
+}
+
+.hero .rule{
+  height:2px;
+  width:100%;
+  margin:30px 0 26px;
+  background:linear-gradient(
+    90deg,
+    var(--hema) 0%,
+    var(--eosin) 38%,
+    var(--eosin-wash) 62%,
+    transparent 100%
+  );
+  transform-origin:left;
+}
+
+.hero p{
+  margin:0 0 22px;
+}
+
+.meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 26px;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:13px;
+  color:var(--stroma);
+}
+
+.meta span{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+
+.dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--eosin);
+  flex:none;
+}
+
+
+/* ---------- hero photo ---------- */
+
+.hero-photo{
+  position:relative;
+}
+
+.hero-photo::before{
+  content:"";
+  position:absolute;
+  width:72%;
+  height:72%;
+  right:-14px;
+  bottom:-14px;
+  background:var(--eosin-wash);
+  border-radius:3px;
+  z-index:0;
+}
+
+.hero-photo img{
+  position:relative;
+  z-index:1;
+  width:100%;
+  aspect-ratio:4 / 5;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+  border-radius:3px;
+  border:1px solid var(--rule);
+}
+
+
+/* ---------- section frame ---------- */
+
+.band{
+  padding:72px 0;
+  border-top:1px solid var(--rule);
+}
+
+.band-head{
+  margin-bottom:38px;
+}
+
+.band-head h2{
+  font-family:"Newsreader",Georgia,serif;
+  font-weight:400;
+  font-size:clamp(27px,3.6vw,38px);
+  margin:10px 0 0;
+  letter-spacing:-.01em;
+}
+
+
+/* ---------- focus ---------- */
+
+.focus{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+}
+
+.focus > div{
+  background:var(--glass);
+  padding:26px 24px 30px;
+}
+
+.focus h3{
+  font-family:"Newsreader",Georgia,serif;
+  font-weight:400;
+  font-size:20px;
+  margin:14px 0 8px;
+  line-height:1.25;
+}
+
+.focus p{
+  margin:0;
+  font-size:15px;
+  color:var(--stroma);
+  line-height:1.6;
+}
+
+.stain{
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  background:var(--hema);
+  position:relative;
+}
+
+.stain::after{
+  content:"";
+  position:absolute;
+  right:-6px;
+  top:6px;
+  width:15px;
+  height:15px;
+  border-radius:50%;
+  background:var(--eosin);
+  mix-blend-mode:multiply;
+}
+
+
+/* ---------- timeline ---------- */
+
+.plot{
+  border:1px solid var(--rule);
+  background:#fff;
+  padding:26px 24px 14px;
+  --labelw:220px;
+}
+
+.axis{
+  position:relative;
+  height:20px;
+  margin-left:var(--labelw);
+  border-bottom:1px solid var(--rule);
+}
+
+.tick{
+  position:absolute;
+  top:0;
+  bottom:0;
+  border-left:1px solid var(--rule);
+}
+
+.tick span{
+  position:absolute;
+  top:2px;
+  left:5px;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:11px;
+  color:var(--hema-soft);
+}
+
+.row{
+  display:grid;
+  grid-template-columns:var(--labelw) 1fr;
+  align-items:center;
+  gap:0;
+  padding:9px 0;
+  border-bottom:1px solid var(--glass-deep);
+}
+
+.row:last-child{
+  border-bottom:0;
+}
+
+.row .label{
+  padding-right:18px;
+}
+
+.row .role{
+  font-size:14.5px;
+  font-weight:500;
+  line-height:1.35;
+  display:block;
+}
+
+.row .org{
+  font-size:12.5px;
+  color:var(--stroma);
+  line-height:1.35;
+  display:block;
+}
+
+.track{
+  position:relative;
+  height:26px;
+}
+
+.bar{
+  position:absolute;
+  top:7px;
+  height:12px;
+  border-radius:2px;
+  background:var(--hema);
+  display:flex;
+  align-items:center;
+}
+
+.bar.edu{
+  background:var(--hema-soft);
+}
+
+.bar .when{
+  position:absolute;
+  left:calc(100% + 9px);
+  white-space:nowrap;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:11px;
+  color:var(--stroma);
+}
+
+.bar.right .when{
+  left:auto;
+  right:calc(100% + 9px);
+}
+
+.plot .bar.now{
+  background:var(--eosin) !important;
+}
+
+.bar.now .when{
+  left:auto;
+  right:0;
+  top:-19px;
+  text-align:right;
+}
+
+.legend{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:18px;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:11.5px;
+  color:var(--stroma);
+}
+.legend i{
+  display:inline-block;
+  width:16px;
+  height:8px;
+  border-radius:2px;
+  margin-right:7px;
+  vertical-align:middle;
+}
+
+
+/* ---------- work ---------- */
+
+.work{
+  display:grid;
+  gap:0;
+  border-top:1px solid var(--rule);
+}
+
+.item{
+  display:grid;
+  grid-template-columns:170px 1fr;
+  gap:28px;
+  padding:28px 0;
+  border-bottom:1px solid var(--rule);
+}
+
+.item .side{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:12px;
+  color:var(--hema-soft);
+  letter-spacing:.04em;
+  padding-top:5px;
+}
+
+.item h3{
+  font-family:"Newsreader",Georgia,serif;
+  font-weight:400;
+  font-size:22px;
+  margin:0 0 10px;
+  line-height:1.3;
+}
+
+.item p{
+  margin:0 0 12px;
+  color:var(--stroma);
+  font-size:15.5px;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+}
+
+.tag{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:11px;
+  letter-spacing:.04em;
+  padding:3px 9px;
+  border:1px solid var(--rule);
+  border-radius:99px;
+  color:var(--stroma);
+  background:#fff;
+}
+
+
+/* ---------- skills ---------- */
+
+.cols{
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:56px;
+}
+
+.langs{
+  display:grid;
+  gap:14px;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
+.langs li{
+  display:grid;
+  grid-template-columns:96px 1fr 62px;
+  align-items:center;
+  gap:14px;
+}
+
+.langs .name{
+  font-size:15px;
+  font-weight:500;
+}
+
+.langs .yrs{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:11.5px;
+  color:var(--stroma);
+  text-align:right;
+}
+
+.meter{
+  height:6px;
+  background:var(--glass-deep);
+  border-radius:99px;
+  overflow:hidden;
+}
+
+.meter i{
+  display:block;
+  height:100%;
+  background:linear-gradient(90deg,var(--hema),var(--eosin));
+  border-radius:99px;
+}
+
+.stack{
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
+.stack li{
+  padding:11px 0;
+  border-bottom:1px solid var(--rule);
+  font-size:15px;
+}
+
+.stack li:first-child{
+  padding-top:0;
+}
+
+.stack b{
+  font-weight:500;
+}
+
+.stack span{
+  color:var(--stroma);
+  font-size:14px;
+  display:block;
+}
+
+
+/* ---------- publication ---------- */
+
+.pub{
+  border-left:2px solid var(--eosin);
+  padding:4px 0 4px 22px;
+  max-width:72ch;
+}
+
+.pub .title{
+  font-family:"Newsreader",Georgia,serif;
+  font-size:21px;
+  line-height:1.35;
+  margin:0 0 10px;
+}
+
+.pub .cite{
+  font-size:14px;
+  color:var(--stroma);
+  margin:0;
+  font-family:"IBM Plex Mono",monospace;
+  line-height:1.7;
+}
+
+
+/* ---------- contact ---------- */
+
+.contact{
+  padding:78px 0 30px;
+  border-top:1px solid var(--rule);
+}
+
+.contact h2{
+  font-family:"Newsreader",Georgia,serif;
+  font-weight:300;
+  font-size:clamp(32px,5vw,52px);
+  margin:12px 0 26px;
+  letter-spacing:-.015em;
+}
+
+.links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.links a{
+  border:1px solid var(--hema);
+  color:var(--hema);
+  padding:10px 20px;
+  border-radius:99px;
+  font-size:14.5px;
+  transition:background .2s,color .2s;
+}
+
+.links a:hover{
+  background:var(--hema);
+  color:var(--glass);
+}
+
+footer{
+  padding:44px 0 60px;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:11.5px;
+  color:var(--hema-soft);
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+
+/* ---------- entrance ---------- */
+
+.rise{
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+
+.rise.in{
+  opacity:1;
+  transform:none;
+}
+
+.hero .rule{
+  transform:scaleX(0);
+  transition:transform 1.1s cubic-bezier(.2,.7,.2,1) .15s;
+}
+
+.hero.in .rule{
+  transform:scaleX(1);
+}
+
+.bar{
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .8s cubic-bezier(.2,.7,.2,1);
+}
+
+.plotwrap.in .bar{
+  transform:scaleX(1);
+}
+
+.meter i{
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .9s cubic-bezier(.2,.7,.2,1) .1s;
+}
+
+.skillswrap.in .meter i{
+  transform:scaleX(1);
+}
+
+
+/* ---------- responsive ---------- */
+
+@media (max-width:860px){
+
+  .focus{
+    grid-template-columns:1fr;
   }
 
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0;
-    background:var(--glass);
-    color:var(--ink);
-    font-family:"IBM Plex Sans",system-ui,sans-serif;
-    font-size:16.5px;
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:var(--eosin-ink);text-decoration:none;border-bottom:1px solid var(--eosin-wash);transition:border-color .2s}
-  a:hover{border-color:var(--eosin)}
-  :focus-visible{outline:2px solid var(--hema);outline-offset:3px;border-radius:2px}
-
-  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
-
-  /* ---------- shared type ---------- */
-  .eyebrow{
-    font-family:"IBM Plex Mono",monospace;
-    font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--hema-soft);
-  }
-  .display{
-    font-family:"Newsreader",Georgia,serif;
-    font-weight:300;
-    letter-spacing:-.015em;
-    line-height:1.08;
-  }
-  .lede{font-size:clamp(17px,1.9vw,20px);color:var(--stroma);max-width:60ch}
-
-  /* ---------- nav ---------- */
-  .topbar{
-    position:sticky;top:0;z-index:50;
-    background:color-mix(in srgb,var(--glass) 88%,transparent);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--rule);
-  }
-  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:20px}
-  .mark{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.08em;color:var(--ink);border:0}
-  .mark b{color:var(--eosin-ink);font-weight:500}
-  .navlinks{display:flex;gap:22px;flex-wrap:wrap}
-  .navlinks a{
-    font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;
-    text-transform:uppercase;color:var(--stroma);border:0;padding-bottom:2px;
-    border-bottom:1px solid transparent;
-  }
-  .navlinks a:hover{color:var(--ink);border-bottom-color:var(--eosin)}
-
-  /* ---------- hero ---------- */
-  .hero{padding:88px 0 72px}
-  .hero h1{
-    font-size:clamp(46px,8.4vw,90px);
-    margin:16px 0 0;
-  }
-  .hero h1 em{font-style:italic;color:var(--hema);font-weight:300}
-  .hero .rule{
-    height:2px;width:100%;margin:30px 0 26px;
-    background:linear-gradient(90deg,var(--hema) 0%,var(--eosin) 38%,var(--eosin-wash) 62%,transparent 100%);
-    transform-origin:left;
-  }
-  .hero p{margin:0 0 22px}
-  .meta{
-    display:flex;flex-wrap:wrap;gap:10px 26px;
-    font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--stroma);
-  }
-  .meta span{display:inline-flex;align-items:center;gap:8px}
-  .dot{width:7px;height:7px;border-radius:50%;background:var(--eosin);flex:none}
-
-  /* ---------- section frame ---------- */
-  .band{padding:72px 0;border-top:1px solid var(--rule)}
-  .band-head{margin-bottom:38px}
-  .band-head h2{
-    font-family:"Newsreader",Georgia,serif;font-weight:400;
-    font-size:clamp(27px,3.6vw,38px);margin:10px 0 0;letter-spacing:-.01em;
+  .cols{
+    grid-template-columns:1fr;
+    gap:44px;
   }
 
-  /* ---------- focus ---------- */
-  .focus{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--rule);border:1px solid var(--rule)}
-  .focus > div{background:var(--glass);padding:26px 24px 30px}
-  .focus h3{
-    font-family:"Newsreader",Georgia,serif;font-weight:400;font-size:20px;
-    margin:14px 0 8px;line-height:1.25;
-  }
-  .focus p{margin:0;font-size:15px;color:var(--stroma);line-height:1.6}
-  .stain{width:26px;height:26px;border-radius:50%;background:var(--hema);position:relative}
-  .stain::after{content:"";position:absolute;right:-6px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--eosin);mix-blend-mode:multiply}
-
-  /* ---------- timeline plot (signature) ---------- */
-  .plot{border:1px solid var(--rule);background:#fff;padding:26px 24px 14px}
-  .axis{
-    position:relative;height:20px;margin-left:var(--labelw);
-    border-bottom:1px solid var(--rule);
-  }
-  .plot{--labelw:220px}
-  .tick{position:absolute;top:0;bottom:0;border-left:1px solid var(--rule)}
-  .tick span{
-    position:absolute;top:2px;left:5px;
-    font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--hema-soft);
-  }
-  .row{
-    display:grid;grid-template-columns:var(--labelw) 1fr;
-    align-items:center;gap:0;padding:9px 0;border-bottom:1px solid var(--glass-deep);
-  }
-  .row:last-child{border-bottom:0}
-  .row .label{padding-right:18px}
-  .row .role{font-size:14.5px;font-weight:500;line-height:1.35;display:block}
-  .row .org{font-size:12.5px;color:var(--stroma);line-height:1.35;display:block}
-  .track{position:relative;height:26px}
-  .bar{
-    position:absolute;top:7px;height:12px;border-radius:2px;
-    background:var(--hema);
-    display:flex;align-items:center;
-  }
-  .bar.edu{background:var(--hema-soft)}
-  .bar.now{background:var(--eosin)}
-  .bar .when{
-    position:absolute;left:calc(100% + 9px);white-space:nowrap;
-    font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--stroma);
-  }
-  .bar.right .when{left:auto;right:calc(100% + 9px)}
-  .legend{
-    display:flex;gap:20px;flex-wrap:wrap;margin-top:18px;
-    font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--stroma);
-  }
-  .legend i{display:inline-block;width:16px;height:8px;border-radius:2px;margin-right:7px;vertical-align:middle}
-
-  /* ---------- work ---------- */
-  .work{display:grid;gap:0;border-top:1px solid var(--rule)}
   .item{
-    display:grid;grid-template-columns:170px 1fr;gap:28px;
-    padding:28px 0;border-bottom:1px solid var(--rule);
-  }
-  .item .side{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--hema-soft);letter-spacing:.04em;padding-top:5px}
-  .item h3{font-family:"Newsreader",Georgia,serif;font-weight:400;font-size:22px;margin:0 0 10px;line-height:1.3}
-  .item p{margin:0 0 12px;color:var(--stroma);font-size:15.5px}
-  .tags{display:flex;flex-wrap:wrap;gap:7px}
-  .tag{
-    font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.04em;
-    padding:3px 9px;border:1px solid var(--rule);border-radius:99px;color:var(--stroma);background:#fff;
+    grid-template-columns:1fr;
+    gap:10px;
   }
 
-  /* ---------- skills ---------- */
-  .cols{display:grid;grid-template-columns:1.1fr 1fr;gap:56px}
-  .langs{display:grid;gap:14px;margin:0;padding:0;list-style:none}
-  .langs li{display:grid;grid-template-columns:96px 1fr 62px;align-items:center;gap:14px}
-  .langs .name{font-size:15px;font-weight:500}
-  .langs .yrs{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--stroma);text-align:right}
-  .meter{height:6px;background:var(--glass-deep);border-radius:99px;overflow:hidden}
-  .meter i{display:block;height:100%;background:linear-gradient(90deg,var(--hema),var(--eosin));border-radius:99px}
-  .stack{margin:0;padding:0;list-style:none}
-  .stack li{padding:11px 0;border-bottom:1px solid var(--rule);font-size:15px}
-  .stack li:first-child{padding-top:0}
-  .stack b{font-weight:500}
-  .stack span{color:var(--stroma);font-size:14px;display:block}
-
-  /* ---------- publication ---------- */
-  .pub{border-left:2px solid var(--eosin);padding:4px 0 4px 22px;max-width:72ch}
-  .pub .title{font-family:"Newsreader",Georgia,serif;font-size:21px;line-height:1.35;margin:0 0 10px}
-  .pub .cite{font-size:14px;color:var(--stroma);margin:0;font-family:"IBM Plex Mono",monospace;line-height:1.7}
-
-  /* ---------- contact ---------- */
-  .contact{padding:78px 0 30px;border-top:1px solid var(--rule)}
-  .contact h2{font-family:"Newsreader",Georgia,serif;font-weight:300;font-size:clamp(32px,5vw,52px);margin:12px 0 26px;letter-spacing:-.015em}
-  .links{display:flex;flex-wrap:wrap;gap:12px}
-  .links a{
-    border:1px solid var(--hema);color:var(--hema);
-    padding:10px 20px;border-radius:99px;font-size:14.5px;
-    transition:background .2s,color .2s;
-  }
-  .links a:hover{background:var(--hema);color:var(--glass)}
-  footer{
-    padding:44px 0 60px;
-    font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--hema-soft);
-    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  .item .side{
+    padding-top:0;
   }
 
-  /* ---------- entrance ---------- */
-  .rise{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
-  .rise.in{opacity:1;transform:none}
-  .hero .rule{transform:scaleX(0);transition:transform 1.1s cubic-bezier(.2,.7,.2,1) .15s}
-  .hero.in .rule{transform:scaleX(1)}
-  .bar{transform:scaleX(0);transform-origin:left;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
-  .plotwrap.in .bar{transform:scaleX(1)}
-  .meter i{transform:scaleX(0);transform-origin:left;transition:transform .9s cubic-bezier(.2,.7,.2,1) .1s}
-  .skillswrap.in .meter i{transform:scaleX(1)}
+  .navlinks{
+    display:none;
+  }
 
-  /* ---------- responsive ---------- */
-  @media (max-width:860px){
-    .focus{grid-template-columns:1fr}
-    .cols{grid-template-columns:1fr;gap:44px}
-    .item{grid-template-columns:1fr;gap:10px}
-    .item .side{padding-top:0}
-    .navlinks{display:none}
+  .hero-grid{
+    grid-template-columns:minmax(0,1fr) 220px;
+    gap:40px;
   }
-  @media (max-width:700px){
-    .wrap{padding:0 20px}
-    .plot{--labelw:0px;padding:22px 18px 12px}
-    .axis{margin-left:0}
-    .row{grid-template-columns:1fr;gap:6px;padding:14px 0}
-    .row .label{padding-right:0}
-    .bar .when{
-      left:auto;right:auto;top:-19px;
-      position:static;margin-left:0;
-    }
-    .bar{overflow:visible}
-    .bar .when{position:absolute;left:0;top:-20px}
-    .bar.right .when{left:0;right:auto}
-    .track{height:36px;margin-top:14px}
+
+}
+
+
+@media (max-width:700px){
+
+  .wrap{
+    padding:0 20px;
   }
-  @media (prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto}
-    .rise,.hero .rule,.bar,.meter i{transition:none;opacity:1;transform:none}
+
+  .hero{
+    padding:64px 0 56px;
   }
+
+  .hero-grid{
+    grid-template-columns:1fr;
+    gap:38px;
+  }
+
+  .hero-photo{
+    max-width:260px;
+  }
+
+  .plot{
+    --labelw:0px;
+    padding:22px 18px 12px;
+  }
+
+  .axis{
+    margin-left:0;
+  }
+
+  .row{
+    grid-template-columns:1fr;
+    gap:6px;
+    padding:14px 0;
+  }
+
+  .row .label{
+    padding-right:0;
+  }
+
+  .bar .when{
+    left:auto;
+    right:auto;
+    top:-19px;
+    position:static;
+    margin-left:0;
+  }
+
+  .bar{
+    overflow:visible;
+  }
+
+  .bar .when{
+    position:absolute;
+    left:0;
+    top:-20px;
+  }
+
+  .bar.right .when{
+    left:0;
+    right:auto;
+  }
+
+  .track{
+    height:36px;
+    margin-top:14px;
+  }
+
+}
+
+
+@media (prefers-reduced-motion:reduce){
+
+  html{
+    scroll-behavior:auto;
+  }
+
+  .rise,
+  .hero .rule,
+  .bar,
+  .meter i{
+    transition:none;
+    opacity:1;
+    transform:none;
+  }
+
+}
+
 </style>
 </head>
+
+
 <body>
 
 <div class="topbar">
   <div class="wrap">
-    <a class="mark" href="#top">Yantong <b>(Kelly)</b> Chen</a>
+
+    <a class="mark" href="#top">
+      Yantong <b>(Kelly)</b> Chen
+    </a>
+
     <nav class="navlinks" aria-label="Sections">
       <a href="#focus">Focus</a>
       <a href="#path">Path</a>
@@ -255,286 +840,1108 @@
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </nav>
+
   </div>
 </div>
 
+
 <main id="top">
 
-  <!-- HERO -->
-  <section class="hero wrap rise">
-    <p class="eyebrow">Biostatistics · Cancer epidemiology · Genomic data</p>
-    <h1 class="display">Reading tumors,<br>cohorts, and <em>risk</em>.</h1>
-    <div class="rule" aria-hidden="true"></div>
-    <p class="lede">I'm a research data analyst at the Slone Epidemiology Center, Boston University, where I work on the Black Women's Health Study — analyzing RNA-seq, tumor pathology, and tissue microarray data to understand how metabolic conditions and medication use shape breast cancer biology. I also study polygenic risk scores for ovarian cancer with the National Cancer Institute.</p>
-    <div class="meta">
-      <span><i class="dot" aria-hidden="true"></i> Boston, Massachusetts</span>
-      <span>MSPH Biostatistics, Emory</span>
-      <span>BSc Mathematics, UBC</span>
-    </div>
-  </section>
 
-  <!-- FOCUS -->
-  <section class="band" id="focus">
-    <div class="wrap">
-      <div class="band-head rise">
-        <p class="eyebrow">What I work on</p>
-        <h2>Three questions I keep returning to.</h2>
+<!-- HERO -->
+
+<section class="hero wrap rise">
+
+  <div class="hero-grid">
+
+    <div class="hero-text">
+
+      <p class="eyebrow">
+        Biostatistics · Cancer epidemiology · Genomic data
+      </p>
+
+      <h1 class="display">
+        Reading tumors,<br>
+        cohorts, and <em>risk</em>.
+      </h1>
+
+      <div class="rule" aria-hidden="true"></div>
+
+      <p class="lede">
+        I'm a research data analyst at the Slone Epidemiology Center, Boston University, where I work on the Black Women's Health Study (BWHS) — analyzing RNA-seq, tumor pathology, and tissue microarray data to understand how metabolic conditions and medication use shape breast cancer biology and the tumor immune microenvironment. I have also worked on ovarian cancer risk prediction using polygenic risk scores (PRS) and epidemiologic factors in the PLCO and CPS-II cohorts.
+      </p>
+
+      <div class="meta">
+
+        <span>
+          <i class="dot" aria-hidden="true"></i>
+          Boston, Massachusetts
+        </span>
+
+        <span>
+          MSPH Biostatistics, Emory
+        </span>
+
+        <span>
+          BSc Mathematics, UBC
+        </span>
+
       </div>
-      <div class="focus rise">
+
+    </div>
+
+
+    <div class="hero-photo">
+      <img
+        src="Profile.JPG"
+        alt="Yantong Kelly Chen"
+      >
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- FOCUS -->
+
+<section class="band" id="focus">
+
+  <div class="wrap">
+
+    <div class="band-head rise">
+
+      <p class="eyebrow">
+        What I work on
+      </p>
+
+      <h2>
+        Three questions I keep returning to.
+      </h2>
+
+    </div>
+
+
+    <div class="focus rise">
+
+      <div>
+  <div class="stain" aria-hidden="true"></div>
+  <h3>How do biology and environment shape cancer?</h3>
+  <p>
+    Using molecular, clinical, and epidemiologic data to understand how
+    metabolic health, medications, and other exposures relate to tumor
+    biology and the immune microenvironment.
+  </p>
+</div>
+
+<div>
+  <div class="stain" aria-hidden="true"></div>
+  <h3>Can we better predict who is at risk?</h3>
+  <p>
+    Combining genetic, molecular, and epidemiologic information to improve
+    cancer risk prediction and identify meaningful differences across
+    populations.
+  </p>
+</div>
+
+<div>
+  <div class="stain" aria-hidden="true"></div>
+  <h3>How can we make complex health data useful?</h3>
+  <p>
+    Developing and applying statistical and computational methods to turn
+    high-dimensional, longitudinal, and multi-source biomedical data into
+    interpretable evidence.
+  </p>
+</div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- TIMELINE -->
+
+<section class="band" id="path">
+
+  <div class="wrap">
+
+    <div class="band-head rise">
+
+      <p class="eyebrow">
+        2019 &rarr; present
+      </p>
+
+      <h2>
+        Positions, plotted on their actual intervals.
+      </h2>
+
+    </div>
+
+
+    <div class="plotwrap rise">
+
+      <div class="plot">
+
+        <div class="axis" aria-hidden="true">
+
+          <div class="tick" style="left:0%">
+            <span>2019</span>
+          </div>
+
+          <div class="tick" style="left:12.5%">
+            <span>2020</span>
+          </div>
+
+          <div class="tick" style="left:25%">
+            <span>2021</span>
+          </div>
+
+          <div class="tick" style="left:37.5%">
+            <span>2022</span>
+          </div>
+
+          <div class="tick" style="left:50%">
+            <span>2023</span>
+          </div>
+
+          <div class="tick" style="left:62.5%">
+            <span>2024</span>
+          </div>
+
+          <div class="tick" style="left:75%">
+            <span>2025</span>
+          </div>
+
+          <div class="tick" style="left:87.5%">
+            <span>2026</span>
+          </div>
+
+        </div>
+
+
+        <div class="row">
+
+          <div class="label">
+            <span class="role">
+              BSc, Mathematics
+            </span>
+
+            <span class="org">
+              University of British Columbia
+            </span>
+          </div>
+
+          <div class="track">
+
+            <div
+              class="bar edu"
+              style="left:8.4%;width:46.2%"
+            >
+              <span class="when">
+                Sep 2019 &ndash; May 2023
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="row">
+
+          <div class="label">
+
+            <span class="role">
+              MSPH, Biostatistics
+            </span>
+
+            <span class="org">
+              Emory University
+            </span>
+
+          </div>
+
+          <div class="track">
+
+            <div
+              class="bar edu"
+              style="left:57.3%;width:21.9%"
+            >
+
+              <span class="when">
+                Aug 2023 &ndash; May 2025
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="row">
+
+          <div class="label">
+
+            <span class="role">
+              Graduate Research Assistant
+            </span>
+
+            <span class="org">
+              Emory School of Nursing
+            </span>
+
+          </div>
+
+          <div class="track">
+
+            <div
+              class="bar right"
+              style="left:63.4%;width:4.6%"
+            >
+
+              <span class="when">
+                Jan &ndash; Jun 2024
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="row">
+
+          <div class="label">
+
+            <span class="role">
+              Nursing Administration Intern
+            </span>
+
+            <span class="org">
+              UCLA Health
+            </span>
+
+          </div>
+
+          <div class="track">
+
+            <div
+              class="bar right"
+              style="left:68.0%;width:2.3%"
+            >
+
+              <span class="when">
+                Jun &ndash; Aug 2024
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="row">
+
+          <div class="label">
+
+            <span class="role">
+              Graduate Research Assistant
+            </span>
+
+            <span class="org">
+              Emory School of Medicine
+            </span>
+
+          </div>
+
+          <div class="track">
+
+            <div
+              class="bar"
+              style="left:69.3%;width:9.9%"
+            >
+
+              <span class="when">
+                Jul 2024 &ndash; May 2025
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="row">
+
+          <div class="label">
+
+            <span class="role">
+              Research Assistant Intern
+            </span>
+
+            <span class="org">
+              American Cancer Society
+            </span>
+
+          </div>
+
+          <div class="track">
+
+            <div
+              class="bar"
+              style="left:70.4%;width:6.3%"
+            >
+
+              <span class="when">
+                Aug 2024 &ndash; Feb 2025
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="row">
+
+          <div class="label">
+
+            <span class="role">
+              Special Volunteer
+            </span>
+
+            <span class="org">
+              Division of Cancer Epidemiology &amp; Genetics, NCI
+            </span>
+
+          </div>
+
+          <div class="track">
+
+            <div
+              class="bar now"
+              style="left:75.9%;width:19.2%"
+            >
+
+              <span class="when">
+                Feb 2025 &ndash; present
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="row">
+
+          <div class="label">
+
+            <span class="role">
+              Research Data Analyst
+            </span>
+
+            <span class="org">
+              Slone Epidemiology Center, Boston University
+            </span>
+
+          </div>
+
+          <div class="track">
+
+            <div
+              class="bar now"
+              style="left:83.4%;width:11.7%"
+            >
+
+              <span class="when">
+                Sep 2025 &ndash; present
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="legend">
+
+        <span>
+          <i style="background:var(--hema-soft)"></i>
+          Degree
+        </span>
+
+        <span>
+          <i style="background:var(--hema)"></i>
+          Past position
+        </span>
+
+        <span>
+          <i style="background:var(--eosin)"></i>
+          Current
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- WORK -->
+
+<section class="band" id="work">
+
+  <div class="wrap">
+
+    <div class="band-head rise">
+
+      <p class="eyebrow">
+        Selected work
+      </p>
+
+      <h2>
+        Projects, and what they actually involved.
+      </h2>
+
+    </div>
+
+
+    <div class="work">
+
+
+      <article class="item rise">
+
+        <div class="side">
+          Slone Epidemiology Center
+          <br>
+          2025 &ndash; present
+        </div>
+
         <div>
-          <div class="stain" aria-hidden="true"></div>
-          <h3>What tumor biology says about exposure</h3>
-          <p>Differential expression, pathway enrichment, and immune deconvolution to connect obesity, type 2 diabetes, and antihypertensive use to gene expression in breast cancer — stratified by ER status and molecular subtype.</p>
+
+          <h3>
+            Transcriptomic signatures of obesity, diabetes, and antihypertensive use in breast cancer
+          </h3>
+
+          <p>
+            RNA-seq analysis of breast cancer cases in the Black Women's
+            Health Study. Ran DESeq2 differential expression, Reactome GSEA,
+            ssGSEA, and CIBERSORTx immune deconvolution, with stratification
+            by ER status and molecular characteristics and extensive
+            evaluation of sequencing batch effects.
+          </p>
+
+          <div class="tags">
+            <span class="tag">DESeq2</span>
+            <span class="tag">GSEA</span>
+            <span class="tag">CIBERSORTx</span>
+            <span class="tag">Bioconductor</span>
+            <span class="tag">shell</span>
+          </div>
+
         </div>
+
+      </article>
+
+
+
+      <article class="item rise">
+
+        <div class="side">
+          Slone Epidemiology Center
+          <br>
+          2025 &ndash; present
+        </div>
+
         <div>
-          <div class="stain" aria-hidden="true"></div>
-          <h3>Whether genetics sharpens risk prediction</h3>
-          <p>Building and validating polygenic risk score models for ovarian cancer in the PLCO and CPS-II cohorts, testing whether they improve absolute risk estimation beyond established epidemiologic factors.</p>
+
+          <h3>
+            PAM50 subtypes against tumor and epidemiologic characteristics
+          </h3>
+
+          <p>
+            Integrated PAM50 classification, P53 mutation status, CD8+
+            staining, pathology, and questionnaire data to run immune-subtype
+            classification and stratified association analyses across ER and
+            tumor subgroups.
+          </p>
+
+          <div class="tags">
+            <span class="tag">PAM50</span>
+            <span class="tag">immune subtyping</span>
+            <span class="tag">stratified analysis</span>
+          </div>
+
         </div>
+
+      </article>
+
+
+
+      <article class="item rise">
+
+        <div class="side">
+          Slone Epidemiology Center
+          <br>
+          2025 &ndash; present
+        </div>
+
         <div>
-          <div class="stain" aria-hidden="true"></div>
-          <h3>How to model messy, mixed exposures</h3>
-          <p>Independent methods research combining quantile g-computation with Bayesian additive regression trees, aiming for health impact estimates from environmental mixtures that stay both accurate and interpretable.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- TIMELINE PLOT -->
-  <section class="band" id="path">
-    <div class="wrap">
-      <div class="band-head rise">
-        <p class="eyebrow">2019 &rarr; present</p>
-        <h2>Positions, plotted on their actual intervals.</h2>
-      </div>
+          <h3>
+            Spatial tissue microarray workflow &amp; a Shiny platform for BWHS
+          </h3>
 
-      <div class="plotwrap rise">
-        <div class="plot">
-          <div class="axis" aria-hidden="true">
-            <div class="tick" style="left:0%"><span>2019</span></div>
-            <div class="tick" style="left:12.5%"><span>2020</span></div>
-            <div class="tick" style="left:25%"><span>2021</span></div>
-            <div class="tick" style="left:37.5%"><span>2022</span></div>
-            <div class="tick" style="left:50%"><span>2023</span></div>
-            <div class="tick" style="left:62.5%"><span>2024</span></div>
-            <div class="tick" style="left:75%"><span>2025</span></div>
-            <div class="tick" style="left:87.5%"><span>2026</span></div>
+          <p>
+            Built a workflow to quantify and visualize immune and tumor-cell
+            markers across epithelial and stromal compartments. Separately,
+            developed an interactive R Shiny explorer over the BWHS database
+            so the research team can inspect variable distributions,
+            participant-level and longitudinal records, and export custom
+            subsets.
+          </p>
+
+          <div class="tags">
+            <span class="tag">R Shiny</span>
+            <span class="tag">spatial analysis</span>
+            <span class="tag">data harmonization</span>
           </div>
 
-          <div class="row">
-            <div class="label"><span class="role">BSc, Mathematics</span><span class="org">University of British Columbia</span></div>
-            <div class="track"><div class="bar edu" style="left:8.4%;width:46.2%"><span class="when">Sep 2019 &ndash; May 2023</span></div></div>
-          </div>
-
-          <div class="row">
-            <div class="label"><span class="role">MSPH, Biostatistics</span><span class="org">Emory University</span></div>
-            <div class="track"><div class="bar edu" style="left:57.3%;width:21.9%"><span class="when">Aug 2023 &ndash; May 2025</span></div></div>
-          </div>
-
-          <div class="row">
-            <div class="label"><span class="role">Graduate Research Assistant</span><span class="org">Emory School of Nursing</span></div>
-            <div class="track"><div class="bar right" style="left:63.4%;width:4.6%"><span class="when">Jan &ndash; Jun 2024</span></div></div>
-          </div>
-
-          <div class="row">
-            <div class="label"><span class="role">Nursing Administration Intern</span><span class="org">UCLA Health</span></div>
-            <div class="track"><div class="bar right" style="left:68.0%;width:2.3%"><span class="when">Jun &ndash; Aug 2024</span></div></div>
-          </div>
-
-          <div class="row">
-            <div class="label"><span class="role">Graduate Research Assistant</span><span class="org">Emory School of Medicine</span></div>
-            <div class="track"><div class="bar" style="left:69.3%;width:9.9%"><span class="when">Jul 2024 &ndash; May 2025</span></div></div>
-          </div>
-
-          <div class="row">
-            <div class="label"><span class="role">Research Assistant Intern</span><span class="org">American Cancer Society</span></div>
-            <div class="track"><div class="bar" style="left:70.4%;width:6.3%"><span class="when">Aug 2024 &ndash; Feb 2025</span></div></div>
-          </div>
-
-          <div class="row">
-            <div class="label"><span class="role">Special Volunteer</span><span class="org">Division of Cancer Epidemiology &amp; Genetics, NCI</span></div>
-            <div class="track"><div class="bar now" style="left:75.9%;width:19.2%"><span class="when">Feb 2025 &ndash; present</span></div></div>
-          </div>
-
-          <div class="row">
-            <div class="label"><span class="role">Research Data Analyst</span><span class="org">Slone Epidemiology Center, Boston University</span></div>
-            <div class="track"><div class="bar now" style="left:83.4%;width:11.7%"><span class="when">Sep 2025 &ndash; present</span></div></div>
-          </div>
         </div>
 
-        <div class="legend">
-          <span><i style="background:var(--hema-soft)"></i>Degree</span>
-          <span><i style="background:var(--hema)"></i>Past position</span>
-          <span><i style="background:var(--eosin)"></i>Current</span>
+      </article>
+
+
+
+      <article class="item rise">
+
+        <div class="side">
+          NCI &amp; American Cancer Society
+          <br>
+          2024 &ndash; present
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- WORK -->
-  <section class="band" id="work">
-    <div class="wrap">
-      <div class="band-head rise">
-        <p class="eyebrow">Selected work</p>
-        <h2>Projects, and what they actually involved.</h2>
-      </div>
-
-      <div class="work">
-        <article class="item rise">
-          <div class="side">Slone Epidemiology Center<br>2025 &ndash; present</div>
-          <div>
-            <h3>Transcriptomic signatures of obesity, diabetes, and antihypertensive use in breast cancer</h3>
-            <p>RNA-seq analysis of breast cancer cases in the Black Women's Health Study. Ran DESeq2 differential expression, Reactome GSEA, ssGSEA, and CIBERSORTx immune deconvolution, with stratification by ER status and molecular characteristics and extensive evaluation of sequencing batch effects.</p>
-            <div class="tags"><span class="tag">DESeq2</span><span class="tag">GSEA</span><span class="tag">CIBERSORTx</span><span class="tag">Bioconductor</span><span class="tag">shell</span></div>
-          </div>
-        </article>
-
-        <article class="item rise">
-          <div class="side">Slone Epidemiology Center<br>2025 &ndash; present</div>
-          <div>
-            <h3>PAM50 subtypes against tumor and epidemiologic characteristics</h3>
-            <p>Integrated PAM50 classification, P53 mutation status, CD8+ staining, pathology, and questionnaire data to run immune-subtype classification and stratified association analyses across ER and tumor subgroups.</p>
-            <div class="tags"><span class="tag">PAM50</span><span class="tag">immune subtyping</span><span class="tag">stratified analysis</span></div>
-          </div>
-        </article>
-
-        <article class="item rise">
-          <div class="side">Slone Epidemiology Center<br>2025 &ndash; present</div>
-          <div>
-            <h3>Spatial tissue microarray workflow &amp; a Shiny platform for BWHS</h3>
-            <p>Built a workflow to quantify and visualize immune and tumor-cell markers across epithelial and stromal compartments. Separately, developed an interactive R Shiny explorer over the BWHS database so the research team can inspect variable distributions, participant-level and longitudinal records, and export custom subsets.</p>
-            <div class="tags"><span class="tag">R Shiny</span><span class="tag">spatial analysis</span><span class="tag">data harmonization</span></div>
-          </div>
-        </article>
-
-        <article class="item rise">
-          <div class="side">NCI &amp; American Cancer Society<br>2024 &ndash; present</div>
-          <div>
-            <h3>Polygenic risk scores for ovarian cancer risk stratification</h3>
-            <p>Combining PRS with epidemiologic variables in the PLCO screening trial and the CPS-II cohort to test whether genetic risk prediction improves absolute risk estimation beyond established factors, using the iCare package for model development and validation. Also contributing to a scoping review of 600+ ovarian cancer publications with a 10+ member team.</p>
-            <div class="tags"><span class="tag">iCare</span><span class="tag">PLCO</span><span class="tag">CPS-II</span><span class="tag">risk modeling</span></div>
-          </div>
-        </article>
-
-        <article class="item rise">
-          <div class="side">Independent research<br>2023 &ndash; 2025</div>
-          <div>
-            <h3>Quantile g-computation meets BART for exposure mixtures</h3>
-            <p>A statistical framework integrating qgcomp with Bayesian additive regression trees, aimed at health impact assessments from complex environmental exposures that keep both accuracy and interpretability.</p>
-            <div class="tags"><span class="tag">qgcomp</span><span class="tag">BART</span><span class="tag">Bayesian methods</span></div>
-          </div>
-        </article>
-
-        <article class="item rise">
-          <div class="side">Emory School of Medicine<br>2024 &ndash; 2025</div>
-          <div>
-            <h3>Vascular stiffness, white matter hyperintensity, and aging perception</h3>
-            <p>Survival and mixed model analyses in 1,253 participants linking pulse wave velocity to white matter hyperintensity for Alzheimer's research, plus an analysis of literacy, gender, education, and stress among 191 participants studying aging perceptions in the South Asian community.</p>
-            <div class="tags"><span class="tag">SAS</span><span class="tag">survival analysis</span><span class="tag">mixed models</span></div>
-          </div>
-        </article>
-
-        <article class="item rise">
-          <div class="side">Emory School of Nursing<br>2024</div>
-          <div>
-            <h3>ECG waveforms for emergency cardiac care, and at-home cancer symptom tracking</h3>
-            <p>Analyzed ECG waveform data from Grady Hospital in MATLAB toward AI tools for emergency cardiac care, and collaborated with Duke University on assessing symptom improvement and intervention effectiveness in at-home cancer patients.</p>
-            <div class="tags"><span class="tag">MATLAB</span><span class="tag">Python</span><span class="tag">signal data</span></div>
-          </div>
-        </article>
-
-        <article class="item rise">
-          <div class="side">Undergraduate research<br>2022 &ndash; 2023</div>
-          <div>
-            <h3>Detecting Parkinson's disease from hand-drawn spirals</h3>
-            <p>Collected ring-shaped drawings from healthy individuals and Parkinson's patients across ages, genders, and races, using both dominant and non-dominant hands, then classified disease status with machine learning.</p>
-            <div class="tags"><span class="tag">machine learning</span><span class="tag">classification</span></div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section class="band" id="skills">
-    <div class="wrap skillswrap">
-      <div class="band-head rise">
-        <p class="eyebrow">Toolkit &amp; training</p>
-        <h2>What I reach for.</h2>
-      </div>
-      <div class="cols rise">
         <div>
-          <ul class="langs">
-            <li><span class="name">Python</span><span class="meter"><i style="width:100%"></i></span><span class="yrs">5 yrs</span></li>
-            <li><span class="name">SAS</span><span class="meter"><i style="width:80%"></i></span><span class="yrs">4 yrs</span></li>
-            <li><span class="name">R</span><span class="meter"><i style="width:80%"></i></span><span class="yrs">4 yrs</span></li>
-            <li><span class="name">MATLAB</span><span class="meter"><i style="width:50%"></i></span><span class="yrs">2.5 yrs</span></li>
-            <li><span class="name">JavaScript</span><span class="meter"><i style="width:20%"></i></span><span class="yrs">1 yr</span></li>
-          </ul>
-          <p class="lede" style="font-size:15px;margin-top:26px">Methods: survival analysis, mixed models, modern regression, clinical trial design, machine learning, Bayesian inference with Stan, JAGS, and INLA.</p>
+
+          <h3>
+            Polygenic risk scores for ovarian cancer risk stratification
+          </h3>
+
+          <p>
+            Combining PRS with epidemiologic variables in the PLCO screening
+            trial and the CPS-II cohort to test whether genetic risk prediction
+            improves absolute risk estimation beyond established factors,
+            using the iCare package for model development and validation.
+            Also contributing to a scoping review of 600+ ovarian cancer
+            publications with a 10+ member team.
+          </p>
+
+          <div class="tags">
+            <span class="tag">iCare</span>
+            <span class="tag">PLCO</span>
+            <span class="tag">CPS-II</span>
+            <span class="tag">risk modeling</span>
+          </div>
+
         </div>
+
+      </article>
+
+
+
+      <article class="item rise">
+
+        <div class="side">
+          Independent research
+          <br>
+          2023 &ndash; 2025
+        </div>
+
         <div>
-          <ul class="stack">
-            <li><b>Bruce Weir Summer Institute in Statistical Genetics</b><span>Genetics &amp; genomics, Bayesian statistics, statistical genetics — heritability, allele frequencies, Hardy-Weinberg equilibrium, kinship, and population structure. 2024.</span></li>
-            <li><b>MSPH Biostatistics, Emory University</b><span>Statistical inference, applied linear models, probability theory, epidemiologic methods, clinical trials, survival analysis, machine learning. 2023–2025.</span></li>
-            <li><b>BSc Mathematics, University of British Columbia</b><span>Probability, matrix algebra, applied linear algebra, algebra and coding theory, linear programming, graphs and networks. 2019–2023.</span></li>
-            <li><b>Health systems &amp; operations</b><span>Global health analysis of South Africa's National Health Insurance; surgical site infection trends in the CDC National Healthcare Safety Network; Lean Academy at UCLA Health.</span></li>
-          </ul>
+
+          <h3>
+            Quantile g-computation meets BART for exposure mixtures
+          </h3>
+
+          <p>
+            A statistical framework integrating qgcomp with Bayesian additive
+            regression trees, aimed at health impact assessments from complex
+            environmental exposures that keep both accuracy and interpretability.
+          </p>
+
+          <div class="tags">
+            <span class="tag">qgcomp</span>
+            <span class="tag">BART</span>
+            <span class="tag">Bayesian methods</span>
+          </div>
+
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- PUBLICATION -->
-  <section class="band" id="publication">
-    <div class="wrap">
-      <div class="band-head rise">
-        <p class="eyebrow">Publication</p>
-        <h2>In print.</h2>
-      </div>
-      <div class="pub rise">
-        <p class="title">Digital Health Innovations to Promote Physical Activities in Patients with Cancer</p>
-        <p class="cite">Albrecht T, <strong>Chen Y</strong>, Allen D, Pastva A, Tian Z, Lin Y, Bold D, Hu X, Xiao R.<br>
-        Stud Health Technol Inform. 2024 Jul 24;315:608–609.<br>
-        <a href="https://doi.org/10.3233/SHTI240239">doi:10.3233/SHTI240239</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/39049345/">PMID 39049345</a></p>
-      </div>
-    </div>
-  </section>
+      </article>
 
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="wrap rise">
-      <p class="eyebrow">Get in touch</p>
-      <h2 class="display">Always glad to talk about<br>cancer data.</h2>
-      <div class="links">
-        <a href="mailto:kellycytbc@gmail.com">kellycytbc@gmail.com</a>
-        <a href="tel:+14046908517">(+1) 404-690-8517</a>
-        <a href="https://www.linkedin.com/in/kelly-chen-1757b41b1/" data-placeholder>LinkedIn</a>
-        <a href="https://github.com/Kellyytc" data-placeholder>GitHub</a>
-        <a href="Yantong_Chen_Resume.pdf">Download CV</a>
+
+
+      <article class="item rise">
+
+        <div class="side">
+          Emory School of Medicine
+          <br>
+          2024 &ndash; 2025
+        </div>
+
+        <div>
+
+          <h3>
+            Vascular stiffness, white matter hyperintensity, and aging perception
+          </h3>
+
+          <p>
+            Survival and mixed model analyses in 1,253 participants linking
+            pulse wave velocity to white matter hyperintensity for Alzheimer's
+            research, plus an analysis of literacy, gender, education, and
+            stress among 191 participants studying aging perceptions in the
+            South Asian community.
+          </p>
+
+          <div class="tags">
+            <span class="tag">SAS</span>
+            <span class="tag">survival analysis</span>
+            <span class="tag">mixed models</span>
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <article class="item rise">
+
+        <div class="side">
+          Emory School of Nursing
+          <br>
+          2024
+        </div>
+
+        <div>
+
+          <h3>
+            ECG waveforms for emergency cardiac care, and at-home cancer symptom tracking
+          </h3>
+
+          <p>
+            Analyzed ECG waveform data from Grady Hospital in MATLAB toward
+            AI tools for emergency cardiac care, and collaborated with Duke
+            University on assessing symptom improvement and intervention
+            effectiveness in at-home cancer patients.
+          </p>
+
+          <div class="tags">
+            <span class="tag">MATLAB</span>
+            <span class="tag">Python</span>
+            <span class="tag">signal data</span>
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <article class="item rise">
+
+        <div class="side">
+          Undergraduate research
+          <br>
+          2022 &ndash; 2023
+        </div>
+
+        <div>
+
+          <h3>
+            Detecting Parkinson's disease from hand-drawn spirals
+          </h3>
+
+          <p>
+            Collected ring-shaped drawings from healthy individuals and
+            Parkinson's patients across ages, genders, and races, using both
+            dominant and non-dominant hands, then classified disease status
+            with machine learning.
+          </p>
+
+          <div class="tags">
+            <span class="tag">machine learning</span>
+            <span class="tag">classification</span>
+          </div>
+
+        </div>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- SKILLS -->
+
+<section class="band" id="skills">
+
+  <div class="wrap skillswrap">
+
+    <div class="band-head rise">
+
+      <p class="eyebrow">
+        Technical toolkit &amp; training
+      </p>
+
+      <h2>
+        Methods I use and foundations I built on.
+      </h2>
+
+    </div>
+
+
+    <div class="cols rise">
+
+
+      <!-- LEFT COLUMN -->
+
+      <div>
+
+        <ul class="langs">
+
+          <li>
+            <span class="name">Python</span>
+            <span class="meter">
+              <i style="width:100%"></i>
+            </span>
+            <span class="yrs">5 yrs</span>
+          </li>
+
+          <li>
+            <span class="name">SAS</span>
+            <span class="meter">
+              <i style="width:80%"></i>
+            </span>
+            <span class="yrs">4 yrs</span>
+          </li>
+
+          <li>
+            <span class="name">R</span>
+            <span class="meter">
+              <i style="width:80%"></i>
+            </span>
+            <span class="yrs">4 yrs</span>
+          </li>
+
+          <li>
+            <span class="name">MATLAB</span>
+            <span class="meter">
+              <i style="width:50%"></i>
+            </span>
+            <span class="yrs">2.5 yrs</span>
+          </li>
+
+          <li>
+            <span class="name">JavaScript</span>
+            <span class="meter">
+              <i style="width:20%"></i>
+            </span>
+            <span class="yrs">1 yr</span>
+          </li>
+
+        </ul>
+
+
+        <p
+          class="lede"
+          style="font-size:15px;margin-top:26px"
+        >
+          Methods: survival analysis, mixed models, modern regression,
+          clinical trial design, machine learning, Bayesian inference with
+          Stan, JAGS, and INLA.
+        </p>
+
       </div>
+
+
+
+      <!-- RIGHT COLUMN -->
+
+      <div>
+
+        <ul class="stack">
+
+          <li>
+
+            <b>
+              Bruce Weir Summer Institute in Statistical Genetics
+            </b>
+
+            <span>
+              Genetics &amp; genomics, Bayesian statistics, and statistical
+              genetics — heritability, allele frequencies, Hardy-Weinberg
+              equilibrium, kinship, and population structure. 2024.
+            </span>
+
+          </li>
+
+
+          <li>
+
+            <b>
+              MSPH in Biostatistics, Emory University
+            </b>
+
+            <span>
+              Statistical inference, applied linear models, probability
+              theory, epidemiologic methods, clinical trials, survival
+              analysis, and machine learning. 2023–2025.
+            </span>
+
+          </li>
+
+
+          <li>
+
+            <b>
+              BSc in Mathematics, University of British Columbia
+            </b>
+
+            <span>
+              Probability, matrix algebra, applied linear algebra, algebra
+              and coding theory, linear programming, graphs and networks.
+              2019–2023.
+            </span>
+
+          </li>
+
+        </ul>
+
+      </div>
+
+
     </div>
-    <div class="wrap">
-      <footer>
-        <span>Yantong (Kelly) Chen · Boston, MA</span>
-        <span>Last updated August 2026</span>
-      </footer>
+
+  </div>
+
+</section>
+
+
+
+<!-- PUBLICATION -->
+
+<section class="band" id="publication">
+
+  <div class="wrap">
+
+    <div class="band-head rise">
+
+      <p class="eyebrow">
+        Publication
+      </p>
+
+      <h2>
+        In print.
+      </h2>
+
     </div>
-  </section>
+
+
+    <div class="pub rise">
+
+      <p class="title">
+        Digital Health Innovations to Promote Physical Activities in Patients with Cancer
+      </p>
+
+      <p class="cite">
+
+        Albrecht T,
+        <strong>Chen Y</strong>,
+        Allen D,
+        Pastva A,
+        Tian Z,
+        Lin Y,
+        Bold D,
+        Hu X,
+        Xiao R.
+
+        <br>
+
+        Stud Health Technol Inform.
+        2024 Jul 24;315:608–609.
+
+        <br>
+
+        <a
+          href="https://doi.org/10.3233/SHTI240239"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          doi:10.3233/SHTI240239
+        </a>
+
+        ·
+
+        <a
+          href="https://pubmed.ncbi.nlm.nih.gov/39049345/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          PMID 39049345
+        </a>
+
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+  <div class="wrap rise">
+
+    <p class="eyebrow">
+      Get in touch
+    </p>
+
+    <h2 class="display">
+      Always glad to talk about
+      <br>
+      cancer data.
+    </h2>
+
+
+    <div class="links">
+
+      <a href="mailto:kellycytbc@gmail.com">
+        kellycytbc@gmail.com
+      </a>
+
+      <a href="tel:+14046908517">
+        (+1) 404-690-8517
+      </a>
+
+      <a
+        href="https://www.linkedin.com/in/kelly-chen-1757b41b1/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LinkedIn
+      </a>
+
+      <a
+        href="https://github.com/Kellyytc"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub
+      </a>
+
+      <a href="Yantong_Chen_Resume.pdf">
+        Download CV
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <div class="wrap">
+
+    <footer>
+
+      <span>
+        Yantong (Kelly) Chen · Boston, MA
+      </span>
+
+      <span>
+        Last updated August 2026
+      </span>
+
+    </footer>
+
+  </div>
+
+</section>
+
 
 </main>
 
+
 <script>
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.rise, .plotwrap, .skillswrap, .hero').forEach(el => io.observe(el));
+const io = new IntersectionObserver(
+  (entries) => {
 
-  // Stagger the timeline bars so the plot draws left to right.
-  document.querySelectorAll('.plot .bar').forEach((bar, i) => {
-    bar.style.transitionDelay = (i * 70) + 'ms';
+    entries.forEach(e => {
+
+      if(e.isIntersecting){
+
+        e.target.classList.add("in");
+
+        io.unobserve(e.target);
+
+      }
+
+    });
+
+  },
+  {
+    threshold:0.12,
+    rootMargin:"0px 0px -40px 0px"
+  }
+);
+
+
+document
+  .querySelectorAll(
+    ".rise, .plotwrap, .skillswrap, .hero"
+  )
+  .forEach(el => io.observe(el));
+
+
+// Stagger timeline bars.
+
+document
+  .querySelectorAll(".plot .bar")
+  .forEach((bar,i) => {
+
+    bar.style.transitionDelay =
+      (i * 70) + "ms";
+
   });
+
 </script>
+
+
 </body>
 </html>
