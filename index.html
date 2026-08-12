@@ -700,6 +700,262 @@ footer{
 }
 
 
+
+/* ---------- journey map ---------- */
+
+.journey-map{
+  position:relative;
+  border:1px solid var(--rule);
+  background:linear-gradient(180deg,#fcfbfd 0%, #f7f4fa 100%);
+  padding:24px;
+  overflow:hidden;
+}
+
+.journey-map svg{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+.journey-ocean{
+  fill:url(#journeyOcean);
+}
+
+.journey-grid{
+  stroke:#e9e3ef;
+  stroke-width:1;
+  opacity:.9;
+}
+
+.journey-grid-label{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:9.5px;
+  fill:#b4a8c6;
+  letter-spacing:.04em;
+}
+
+.journey-land{
+  fill:#ebe6f1;
+  stroke:#d9d1e3;
+  stroke-width:1.2;
+}
+
+.journey-land-detail{
+  fill:none;
+  stroke:#d8cfe2;
+  stroke-width:1;
+  opacity:.75;
+}
+
+.journey-region{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:11px;
+  fill:#b2a6c4;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.journey-region.cn{
+  font-size:13px;
+  letter-spacing:.08em;
+}
+
+.journey-water-label{
+  font-family:"Newsreader",Georgia,serif;
+  font-size:18px;
+  font-style:italic;
+  fill:#c1b5d2;
+}
+
+.journey-meta{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10px;
+  fill:#b4a8c6;
+}
+
+.journey-route{
+  fill:none;
+  stroke:var(--eosin);
+  stroke-width:3;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-dasharray:1000;
+  stroke-dashoffset:1000;
+  opacity:.95;
+  transition:stroke-dashoffset 2.2s ease;
+}
+
+.journey-map.in .journey-route{
+  stroke-dashoffset:0;
+}
+
+.journey-dot{
+  fill:var(--hema);
+  stroke:#fff;
+  stroke-width:3;
+  opacity:0;
+  transform:scale(.45);
+  transform-origin:center;
+  transition:opacity .45s ease, transform .45s ease;
+}
+
+.journey-dot.current{
+  fill:var(--eosin);
+}
+
+.journey-map.in .journey-dot{
+  opacity:1;
+  transform:scale(1);
+}
+
+.journey-map.in .journey-dot.tsn{ transition-delay:.15s; }
+.journey-map.in .journey-dot.yvr{ transition-delay:.75s; }
+.journey-map.in .journey-dot.atl{ transition-delay:1.25s; }
+.journey-map.in .journey-dot.bos{ transition-delay:1.8s; }
+
+.journey-ring{
+  fill:none;
+  stroke:var(--eosin);
+  stroke-width:2;
+  opacity:0;
+}
+
+.journey-map.in .journey-ring{
+  animation:journeyPulse 2s ease-out 2.2s infinite;
+}
+
+@keyframes journeyPulse{
+  0%{
+    opacity:.7;
+    transform:scale(.7);
+    transform-origin:center;
+  }
+  70%{
+    opacity:0;
+    transform:scale(2.2);
+    transform-origin:center;
+  }
+  100%{
+    opacity:0;
+    transform:scale(2.2);
+    transform-origin:center;
+  }
+}
+
+.journey-label{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:13px;
+  fill:var(--ink);
+  font-weight:600;
+  letter-spacing:.04em;
+}
+
+.journey-city{
+  font-family:"IBM Plex Sans",sans-serif;
+  font-size:12px;
+  fill:var(--stroma);
+}
+
+.journey-city.zh{
+  font-size:11px;
+}
+
+.journey-year{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10px;
+  fill:var(--hema-soft);
+}
+
+.journey-caption{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.journey-caption div{
+  background:#fff;
+  border:1px solid var(--rule);
+  padding:10px 12px;
+}
+
+.journey-caption b{
+  display:block;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:12px;
+  color:var(--ink);
+  margin-bottom:4px;
+}
+
+.journey-caption span{
+  display:block;
+  font-size:13px;
+  color:var(--stroma);
+  line-height:1.45;
+}
+
+@media (max-width:860px){
+  .journey-caption{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media (max-width:700px){
+
+  .journey-map{
+    padding:14px;
+  }
+
+  .journey-label{
+    font-size:10.5px;
+  }
+
+  .journey-city{
+    font-size:9.5px;
+  }
+
+  .journey-city.zh{
+    font-size:8.8px;
+  }
+
+  .journey-year{
+    font-size:8.5px;
+  }
+
+  .journey-region,
+  .journey-meta,
+  .journey-grid-label{
+    font-size:8px;
+  }
+
+  .journey-water-label{
+    font-size:14px;
+  }
+
+  .journey-caption{
+    grid-template-columns:1fr;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .journey-route{
+    transition:none;
+    stroke-dashoffset:0;
+  }
+
+  .journey-dot{
+    transition:none;
+    opacity:1;
+    transform:none;
+  }
+
+  .journey-ring{
+    animation:none !important;
+    opacity:.35;
+  }
+}
+
+
 /* ---------- responsive ---------- */
 
 @media (max-width:860px){
@@ -834,6 +1090,7 @@ footer{
     </a>
 
     <nav class="navlinks" aria-label="Sections">
+      <a href="#journey">Journey</a>
       <a href="#focus">Focus</a>
       <a href="#path">Path</a>
       <a href="#work">Work</a>
@@ -902,6 +1159,195 @@ footer{
 
 </section>
 
+
+
+<!-- JOURNEY -->
+
+<section class="band" id="journey">
+
+  <div class="wrap">
+
+    <div class="band-head rise">
+      <p class="eyebrow">
+        Tianjin → Vancouver → Atlanta → Boston
+      </p>
+      <h2>
+        Where the path has taken me.
+      </h2>
+    </div>
+
+    <div class="journey-map rise">
+
+      <svg
+        viewBox="0 0 1000 500"
+        role="img"
+        aria-label="Map showing journey from Tianjin to Vancouver to Atlanta to Boston"
+      >
+        <defs>
+          <linearGradient id="journeyOcean" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#fcfbfd"></stop>
+            <stop offset="100%" stop-color="#f3eef8"></stop>
+          </linearGradient>
+        </defs>
+
+        <rect class="journey-ocean" x="0" y="0" width="1000" height="500"></rect>
+
+        <!-- map grid -->
+        <g aria-hidden="true">
+          <line class="journey-grid" x1="0" y1="85" x2="1000" y2="85"></line>
+          <line class="journey-grid" x1="0" y1="165" x2="1000" y2="165"></line>
+          <line class="journey-grid" x1="0" y1="245" x2="1000" y2="245"></line>
+          <line class="journey-grid" x1="0" y1="325" x2="1000" y2="325"></line>
+          <line class="journey-grid" x1="0" y1="405" x2="1000" y2="405"></line>
+
+          <line class="journey-grid" x1="120" y1="0" x2="120" y2="500"></line>
+          <line class="journey-grid" x1="280" y1="0" x2="280" y2="500"></line>
+          <line class="journey-grid" x1="440" y1="0" x2="440" y2="500"></line>
+          <line class="journey-grid" x1="600" y1="0" x2="600" y2="500"></line>
+          <line class="journey-grid" x1="760" y1="0" x2="760" y2="500"></line>
+          <line class="journey-grid" x1="920" y1="0" x2="920" y2="500"></line>
+
+          <text class="journey-grid-label" x="8" y="88">50°N</text>
+          <text class="journey-grid-label" x="8" y="168">40°N</text>
+          <text class="journey-grid-label" x="8" y="248">30°N</text>
+          <text class="journey-grid-label" x="8" y="328">20°N</text>
+
+          <text class="journey-grid-label" x="90" y="16">120°E</text>
+          <text class="journey-grid-label" x="247" y="16">160°E</text>
+          <text class="journey-grid-label" x="402" y="16">140°W</text>
+          <text class="journey-grid-label" x="566" y="16">100°W</text>
+          <text class="journey-grid-label" x="726" y="16">80°W</text>
+          <text class="journey-grid-label" x="886" y="16">60°W</text>
+        </g>
+
+        <!-- continents -->
+        <path
+          class="journey-land"
+          d="M92,134
+             C122,92 184,63 248,60
+             C319,57 379,86 412,132
+             C433,162 438,196 426,224
+             C412,255 388,274 352,284
+             C316,294 278,292 247,277
+             C224,266 208,246 193,243
+             C176,239 151,245 128,235
+             C98,222 77,192 82,160
+             C84,149 87,141 92,134Z"
+        ></path>
+
+        <path
+          class="journey-land"
+          d="M484,92
+             C529,67 590,59 654,66
+             C739,75 815,111 856,171
+             C876,200 880,231 869,260
+             C855,295 825,315 788,321
+             C758,326 730,318 709,302
+             C690,288 677,264 660,259
+             C634,252 618,265 590,260
+             C554,254 517,224 499,190
+             C483,159 474,120 484,92Z"
+        ></path>
+
+        <!-- coast / region detail -->
+        <path
+          class="journey-land-detail"
+          d="M704,203
+             C728,220 745,239 756,259
+             C765,276 770,291 783,304"
+        ></path>
+
+        <path
+          class="journey-land-detail"
+          d="M394,173
+             C405,184 410,195 409,208"
+        ></path>
+
+        <!-- region labels -->
+        <text class="journey-region" x="192" y="110">EAST ASIA</text>
+        <text class="journey-region cn" x="225" y="128">东亚</text>
+        <text class="journey-region" x="612" y="122">NORTH AMERICA</text>
+        <text class="journey-water-label" x="425" y="215">North Pacific Ocean</text>
+
+        <!-- extra map metadata -->
+        <text class="journey-meta" x="38" y="470">Approximate great-circle travel path</text>
+        <text class="journey-meta" x="780" y="470">Stylized map · not to scale</text>
+
+        <!-- routes -->
+        <path
+          class="journey-route"
+          d="M340 170
+             Q462 58 560 115"
+        ></path>
+
+        <path
+          class="journey-route"
+          d="M560 115
+             Q650 170 720 286"
+        ></path>
+
+        <path
+          class="journey-route"
+          d="M720 286
+             Q792 242 834 186"
+        ></path>
+
+        <!-- Tianjin -->
+        <circle class="journey-dot tsn" cx="340" cy="170" r="8"></circle>
+        <text class="journey-label" x="274" y="148">TSN</text>
+        <text class="journey-city" x="274" y="165">Tianjin</text>
+        <text class="journey-city zh" x="274" y="180">天津</text>
+        <text class="journey-year" x="274" y="196">Home · 39.1°N, 117.2°E</text>
+
+        <!-- Vancouver -->
+        <circle class="journey-dot yvr" cx="560" cy="115" r="8"></circle>
+        <text class="journey-label" x="576" y="96">YVR</text>
+        <text class="journey-city" x="576" y="113">Vancouver</text>
+        <text class="journey-year" x="576" y="129">2019–2023 · UBC · 49.3°N, 123.1°W</text>
+
+        <!-- Atlanta -->
+        <circle class="journey-dot atl" cx="720" cy="286" r="8"></circle>
+        <text class="journey-label" x="735" y="270">ATL</text>
+        <text class="journey-city" x="735" y="287">Atlanta</text>
+        <text class="journey-year" x="735" y="303">2023–2025 · Emory · 33.7°N, 84.4°W</text>
+
+        <!-- Boston -->
+        <circle class="journey-ring" cx="834" cy="186" r="11"></circle>
+        <circle class="journey-dot current bos" cx="834" cy="186" r="9"></circle>
+        <text class="journey-label" x="850" y="170">BOS</text>
+        <text class="journey-city" x="850" y="187">Boston</text>
+        <text class="journey-year" x="850" y="203">2025–present · BU · 42.4°N, 71.1°W</text>
+
+      </svg>
+
+      <div class="journey-caption">
+        <div>
+          <b>TSN</b>
+          <span>Tianjin, China · 天津</span>
+          <span>Home</span>
+        </div>
+        <div>
+          <b>YVR</b>
+          <span>Vancouver, Canada</span>
+          <span>UBC · 2019–2023</span>
+        </div>
+        <div>
+          <b>ATL</b>
+          <span>Atlanta, USA</span>
+          <span>Emory · 2023–2025</span>
+        </div>
+        <div>
+          <b>BOS</b>
+          <span>Boston, USA</span>
+          <span>Boston University · 2025–present</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
 
 <!-- FOCUS -->
@@ -1865,7 +2311,7 @@ footer{
         GitHub
       </a>
 
-      <a href="Yantong_Chen_Resume.pdf">
+      <a href="Yantong_Chen_Resume.pdf?v=20260812" target="_blank" rel="noopener noreferrer">
   Download CV
 </a>
 
@@ -1923,7 +2369,7 @@ const io = new IntersectionObserver(
 
 document
   .querySelectorAll(
-    ".rise, .plotwrap, .skillswrap, .hero"
+    ".rise, .plotwrap, .skillswrap, .hero, .journey-map"
   )
   .forEach(el => io.observe(el));
 
