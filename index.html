@@ -701,255 +701,188 @@ footer{
 
 
 
-/* ---------- journey map ---------- */
+/* ---------- journey dotted path ---------- */
 
-.journey-map{
+.journey-story{
   position:relative;
   border:1px solid var(--rule);
-  background:linear-gradient(180deg,#fcfbfd 0%, #f7f4fa 100%);
-  padding:24px;
+  background:
+    radial-gradient(circle at 1px 1px, rgba(74,47,107,.10) 1px, transparent 1.2px);
+  background-size:18px 18px;
+  background-color:#fbfafc;
+  padding:34px 28px 30px;
   overflow:hidden;
 }
 
-.journey-map svg{
+.journey-story svg{
   width:100%;
   height:auto;
   display:block;
 }
 
-.journey-ocean{
-  fill:url(#journeyOcean);
-}
-
-.journey-grid{
-  stroke:#e9e3ef;
-  stroke-width:1;
-  opacity:.9;
-}
-
-.journey-grid-label{
-  font-family:"IBM Plex Mono",monospace;
-  font-size:9.5px;
-  fill:#b4a8c6;
-  letter-spacing:.04em;
-}
-
-.journey-land{
-  fill:#ebe6f1;
-  stroke:#d9d1e3;
-  stroke-width:1.2;
-}
-
-.journey-land-detail{
+.journey-path{
   fill:none;
-  stroke:#d8cfe2;
-  stroke-width:1;
-  opacity:.75;
-}
-
-.journey-region{
-  font-family:"IBM Plex Mono",monospace;
-  font-size:11px;
-  fill:#b2a6c4;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-}
-
-.journey-region.cn{
-  font-size:13px;
-  letter-spacing:.08em;
-}
-
-.journey-water-label{
-  font-family:"Newsreader",Georgia,serif;
-  font-size:18px;
-  font-style:italic;
-  fill:#c1b5d2;
-}
-
-.journey-meta{
-  font-family:"IBM Plex Mono",monospace;
-  font-size:10px;
-  fill:#b4a8c6;
-}
-
-.journey-route{
-  fill:none;
-  stroke:var(--eosin);
+  stroke:var(--hema);
   stroke-width:3;
   stroke-linecap:round;
   stroke-linejoin:round;
-  stroke-dasharray:1000;
-  stroke-dashoffset:1000;
+  stroke-dasharray:2 9;
+  stroke-dashoffset:1400;
   opacity:.95;
-  transition:stroke-dashoffset 2.2s ease;
+  transition:stroke-dashoffset 3s cubic-bezier(.2,.7,.2,1);
 }
 
-.journey-map.in .journey-route{
+.journey-story.in .journey-path{
   stroke-dashoffset:0;
 }
 
-.journey-dot{
-  fill:var(--hema);
-  stroke:#fff;
-  stroke-width:3;
+.journey-stop{
   opacity:0;
-  transform:scale(.45);
-  transform-origin:center;
+  transform:translateY(8px);
   transition:opacity .45s ease, transform .45s ease;
 }
 
-.journey-dot.current{
-  fill:var(--eosin);
-}
-
-.journey-map.in .journey-dot{
+.journey-story.in .journey-stop{
   opacity:1;
-  transform:scale(1);
+  transform:none;
 }
 
-.journey-map.in .journey-dot.tsn{ transition-delay:.15s; }
-.journey-map.in .journey-dot.yvr{ transition-delay:.75s; }
-.journey-map.in .journey-dot.atl{ transition-delay:1.25s; }
-.journey-map.in .journey-dot.bos{ transition-delay:1.8s; }
+.journey-story.in .journey-stop.stop-1{ transition-delay:.15s; }
+.journey-story.in .journey-stop.stop-2{ transition-delay:.8s; }
+.journey-story.in .journey-stop.stop-3{ transition-delay:1.45s; }
+.journey-story.in .journey-stop.stop-4{ transition-delay:2.1s; }
 
-.journey-ring{
+.journey-icon-box{
+  fill:#fff;
+  stroke:var(--ink);
+  stroke-width:2;
+}
+
+.journey-icon-line{
+  fill:none;
+  stroke:var(--ink);
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.journey-icon-accent{
+  fill:var(--eosin-wash);
+  stroke:var(--eosin);
+  stroke-width:1.6;
+}
+
+.journey-code{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:13px;
+  font-weight:600;
+  fill:var(--ink);
+  letter-spacing:.05em;
+}
+
+.journey-place{
+  font-family:"IBM Plex Sans",sans-serif;
+  font-size:12.5px;
+  fill:var(--stroma);
+}
+
+.journey-detail{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10.5px;
+  fill:var(--hema-soft);
+}
+
+.journey-final-label{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:9.5px;
+  font-weight:500;
+  fill:var(--eosin-ink);
+  letter-spacing:.12em;
+}
+
+.journey-destination-ring{
   fill:none;
   stroke:var(--eosin);
   stroke-width:2;
   opacity:0;
 }
 
-.journey-map.in .journey-ring{
-  animation:journeyPulse 2s ease-out 2.2s infinite;
+.journey-story.in .journey-destination-ring{
+  animation:journeyDestinationPulse 2.4s ease-out 2.7s 2;
 }
 
-@keyframes journeyPulse{
+@keyframes journeyDestinationPulse{
   0%{
-    opacity:.7;
-    transform:scale(.7);
+    opacity:.6;
+    transform:scale(.8);
     transform-origin:center;
   }
   70%{
     opacity:0;
-    transform:scale(2.2);
+    transform:scale(1.45);
     transform-origin:center;
   }
   100%{
     opacity:0;
-    transform:scale(2.2);
+    transform:scale(1.45);
     transform-origin:center;
   }
 }
 
-.journey-label{
+.journey-note{
+  margin:18px 0 0;
   font-family:"IBM Plex Mono",monospace;
-  font-size:13px;
-  fill:var(--ink);
-  font-weight:600;
-  letter-spacing:.04em;
-}
-
-.journey-city{
-  font-family:"IBM Plex Sans",sans-serif;
-  font-size:12px;
-  fill:var(--stroma);
-}
-
-.journey-city.zh{
   font-size:11px;
-}
-
-.journey-year{
-  font-family:"IBM Plex Mono",monospace;
-  font-size:10px;
-  fill:var(--hema-soft);
-}
-
-.journey-caption{
-  margin-top:18px;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-}
-
-.journey-caption div{
-  background:#fff;
-  border:1px solid var(--rule);
-  padding:10px 12px;
-}
-
-.journey-caption b{
-  display:block;
-  font-family:"IBM Plex Mono",monospace;
-  font-size:12px;
-  color:var(--ink);
-  margin-bottom:4px;
-}
-
-.journey-caption span{
-  display:block;
-  font-size:13px;
-  color:var(--stroma);
-  line-height:1.45;
-}
-
-@media (max-width:860px){
-  .journey-caption{
-    grid-template-columns:repeat(2,1fr);
-  }
+  color:var(--hema-soft);
+  text-align:center;
+  letter-spacing:.04em;
 }
 
 @media (max-width:700px){
 
-  .journey-map{
-    padding:14px;
+  .journey-story{
+    padding:22px 12px 20px;
+    background-size:14px 14px;
   }
 
-  .journey-label{
+  .journey-code{
+    font-size:11px;
+  }
+
+  .journey-place{
     font-size:10.5px;
   }
 
-  .journey-city{
-    font-size:9.5px;
-  }
-
-  .journey-city.zh{
-    font-size:8.8px;
-  }
-
-  .journey-year{
+  .journey-detail{
     font-size:8.5px;
   }
 
-  .journey-region,
-  .journey-meta,
-  .journey-grid-label{
+  .journey-final-label{
     font-size:8px;
   }
 
-  .journey-water-label{
-    font-size:14px;
+  .journey-path{
+    stroke-width:2.4;
   }
 
-  .journey-caption{
-    grid-template-columns:1fr;
+  .journey-note{
+    font-size:9.5px;
   }
 }
 
 @media (prefers-reduced-motion:reduce){
-  .journey-route{
+  .journey-path{
     transition:none;
     stroke-dashoffset:0;
   }
 
-  .journey-dot{
+  .journey-stop{
     transition:none;
     opacity:1;
     transform:none;
   }
 
-  .journey-ring{
+  .journey-destination-ring{
     animation:none !important;
     opacity:.35;
   }
@@ -1176,172 +1109,211 @@ footer{
       </h2>
     </div>
 
-    <div class="journey-map rise">
+    <div class="journey-story rise">
 
       <svg
-        viewBox="0 0 1000 500"
+        viewBox="0 0 1000 430"
         role="img"
-        aria-label="Map showing journey from Tianjin to Vancouver to Atlanta to Boston"
+        aria-label="Personal journey from Tianjin to Vancouver to Atlanta, ending in Boston"
       >
-        <defs>
-          <linearGradient id="journeyOcean" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stop-color="#fcfbfd"></stop>
-            <stop offset="100%" stop-color="#f3eef8"></stop>
-          </linearGradient>
-        </defs>
 
-        <rect class="journey-ocean" x="0" y="0" width="1000" height="500"></rect>
+        <!-- dotted hand-drawn route ending at Boston -->
+        <path
+          class="journey-path"
+          d="
+            M105 292
+            C155 302, 160 235, 205 235
+            C250 235, 230 130, 300 120
+            C365 111, 392 160, 370 202
+            C350 240, 405 258, 455 246
+            C510 232, 485 316, 555 317
+            C622 317, 610 220, 676 205
+            C738 190, 700 106, 774 102
+          "
+        ></path>
 
-        <!-- map grid -->
-        <g aria-hidden="true">
-          <line class="journey-grid" x1="0" y1="85" x2="1000" y2="85"></line>
-          <line class="journey-grid" x1="0" y1="165" x2="1000" y2="165"></line>
-          <line class="journey-grid" x1="0" y1="245" x2="1000" y2="245"></line>
-          <line class="journey-grid" x1="0" y1="325" x2="1000" y2="325"></line>
-          <line class="journey-grid" x1="0" y1="405" x2="1000" y2="405"></line>
+        <!-- TSN -->
+        <g class="journey-stop stop-1">
 
-          <line class="journey-grid" x1="120" y1="0" x2="120" y2="500"></line>
-          <line class="journey-grid" x1="280" y1="0" x2="280" y2="500"></line>
-          <line class="journey-grid" x1="440" y1="0" x2="440" y2="500"></line>
-          <line class="journey-grid" x1="600" y1="0" x2="600" y2="500"></line>
-          <line class="journey-grid" x1="760" y1="0" x2="760" y2="500"></line>
-          <line class="journey-grid" x1="920" y1="0" x2="920" y2="500"></line>
+          <circle
+            class="journey-icon-accent"
+            cx="105"
+            cy="278"
+            r="17"
+          ></circle>
 
-          <text class="journey-grid-label" x="8" y="88">50°N</text>
-          <text class="journey-grid-label" x="8" y="168">40°N</text>
-          <text class="journey-grid-label" x="8" y="248">30°N</text>
-          <text class="journey-grid-label" x="8" y="328">20°N</text>
+          <path
+            class="journey-icon-line"
+            d="M96 278
+               Q105 266 114 278
+               M99 279
+               L99 288
+               L111 288
+               L111 279
+               M102 288
+               L102 283
+               L108 283
+               L108 288"
+          ></path>
 
-          <text class="journey-grid-label" x="90" y="16">120°E</text>
-          <text class="journey-grid-label" x="247" y="16">160°E</text>
-          <text class="journey-grid-label" x="402" y="16">140°W</text>
-          <text class="journey-grid-label" x="566" y="16">100°W</text>
-          <text class="journey-grid-label" x="726" y="16">80°W</text>
-          <text class="journey-grid-label" x="886" y="16">60°W</text>
+          <text class="journey-code" x="63" y="328">TSN</text>
+          <text class="journey-place" x="63" y="347">Tianjin · 天津</text>
+          <text class="journey-detail" x="63" y="365">Home</text>
+
         </g>
 
-        <!-- continents -->
-        <path
-          class="journey-land"
-          d="M92,134
-             C122,92 184,63 248,60
-             C319,57 379,86 412,132
-             C433,162 438,196 426,224
-             C412,255 388,274 352,284
-             C316,294 278,292 247,277
-             C224,266 208,246 193,243
-             C176,239 151,245 128,235
-             C98,222 77,192 82,160
-             C84,149 87,141 92,134Z"
-        ></path>
 
-        <path
-          class="journey-land"
-          d="M484,92
-             C529,67 590,59 654,66
-             C739,75 815,111 856,171
-             C876,200 880,231 869,260
-             C855,295 825,315 788,321
-             C758,326 730,318 709,302
-             C690,288 677,264 660,259
-             C634,252 618,265 590,260
-             C554,254 517,224 499,190
-             C483,159 474,120 484,92Z"
-        ></path>
+        <!-- YVR -->
+        <g class="journey-stop stop-2">
 
-        <!-- coast / region detail -->
-        <path
-          class="journey-land-detail"
-          d="M704,203
-             C728,220 745,239 756,259
-             C765,276 770,291 783,304"
-        ></path>
+          <!-- bachelor's degree graduation cap -->
+          <path
+            class="journey-icon-line"
+            d="
+              M270 96
+              L301 82
+              L332 96
+              L301 110
+              Z
+            "
+          ></path>
 
-        <path
-          class="journey-land-detail"
-          d="M394,173
-             C405,184 410,195 409,208"
-        ></path>
+          <path
+            class="journey-icon-line"
+            d="
+              M280 101
+              L280 116
+              Q301 128 322 116
+              L322 101
+            "
+          ></path>
 
-        <!-- region labels -->
-        <text class="journey-region" x="192" y="110">EAST ASIA</text>
-        <text class="journey-region cn" x="225" y="128">东亚</text>
-        <text class="journey-region" x="612" y="122">NORTH AMERICA</text>
-        <text class="journey-water-label" x="425" y="215">North Pacific Ocean</text>
+          <path
+            class="journey-icon-line"
+            d="
+              M332 96
+              L332 116
+            "
+          ></path>
 
-        <!-- extra map metadata -->
-        <text class="journey-meta" x="38" y="470">Approximate great-circle travel path</text>
-        <text class="journey-meta" x="780" y="470">Stylized map · not to scale</text>
+          <circle
+            class="journey-icon-accent"
+            cx="332"
+            cy="119"
+            r="3"
+          ></circle>
 
-        <!-- routes -->
-        <path
-          class="journey-route"
-          d="M340 170
-             Q462 58 560 115"
-        ></path>
+          <text class="journey-code" x="270" y="153">YVR</text>
+          <text class="journey-place" x="270" y="172">Vancouver</text>
+          <text class="journey-detail" x="270" y="190">UBC · BSc Mathematics · 2019–2023</text>
 
-        <path
-          class="journey-route"
-          d="M560 115
-             Q650 170 720 286"
-        ></path>
+        </g>
 
-        <path
-          class="journey-route"
-          d="M720 286
-             Q792 242 834 186"
-        ></path>
 
-        <!-- Tianjin -->
-        <circle class="journey-dot tsn" cx="340" cy="170" r="8"></circle>
-        <text class="journey-label" x="274" y="148">TSN</text>
-        <text class="journey-city" x="274" y="165">Tianjin</text>
-        <text class="journey-city zh" x="274" y="180">天津</text>
-        <text class="journey-year" x="274" y="196">Home · 39.1°N, 117.2°E</text>
+        <!-- ATL -->
+        <g class="journey-stop stop-3">
 
-        <!-- Vancouver -->
-        <circle class="journey-dot yvr" cx="560" cy="115" r="8"></circle>
-        <text class="journey-label" x="576" y="96">YVR</text>
-        <text class="journey-city" x="576" y="113">Vancouver</text>
-        <text class="journey-year" x="576" y="129">2019–2023 · UBC · 49.3°N, 123.1°W</text>
+          <!-- graduate degree cap -->
+          <path
+            class="journey-icon-line"
+            d="
+              M520 300
+              L550 287
+              L580 300
+              L550 313
+              Z
+            "
+          ></path>
 
-        <!-- Atlanta -->
-        <circle class="journey-dot atl" cx="720" cy="286" r="8"></circle>
-        <text class="journey-label" x="735" y="270">ATL</text>
-        <text class="journey-city" x="735" y="287">Atlanta</text>
-        <text class="journey-year" x="735" y="303">2023–2025 · Emory · 33.7°N, 84.4°W</text>
+          <path
+            class="journey-icon-line"
+            d="
+              M529 305
+              L529 319
+              Q550 331 571 319
+              L571 305
+            "
+          ></path>
 
-        <!-- Boston -->
-        <circle class="journey-ring" cx="834" cy="186" r="11"></circle>
-        <circle class="journey-dot current bos" cx="834" cy="186" r="9"></circle>
-        <text class="journey-label" x="850" y="170">BOS</text>
-        <text class="journey-city" x="850" y="187">Boston</text>
-        <text class="journey-year" x="850" y="203">2025–present · BU · 42.4°N, 71.1°W</text>
+          <path
+            class="journey-icon-line"
+            d="
+              M580 300
+              L580 320
+            "
+          ></path>
+
+          <circle
+            class="journey-icon-accent"
+            cx="580"
+            cy="323"
+            r="3"
+          ></circle>
+
+          <text class="journey-code" x="500" y="360">ATL</text>
+          <text class="journey-place" x="500" y="379">Atlanta</text>
+          <text class="journey-detail" x="500" y="397">Emory · MSPH Biostatistics · 2023–2025</text>
+
+        </g>
+
+
+        <!-- BOS: final destination / current chapter -->
+        <g class="journey-stop stop-4">
+
+          <circle
+            class="journey-destination-ring"
+            cx="774"
+            cy="102"
+            r="36"
+          ></circle>
+
+          <!-- final destination pin -->
+          <path
+            class="journey-icon-accent"
+            d="
+              M774 67
+              C754 67 741 82 741 99
+              C741 121 774 146 774 146
+              C774 146 807 121 807 99
+              C807 82 794 67 774 67
+              Z
+            "
+          ></path>
+
+          <circle
+            class="journey-icon-box"
+            cx="774"
+            cy="99"
+            r="11"
+          ></circle>
+
+          <!-- small research mark inside pin -->
+          <path
+            class="journey-icon-line"
+            d="
+              M769 103
+              L769 95
+              M769 103
+              L780 103
+              M771 100
+              L774 97
+              L777 99
+              L780 94
+            "
+          ></path>
+
+          <text class="journey-final-label" x="728" y="48">FINAL DESTINATION</text>
+          <text class="journey-code" x="735" y="170">BOS</text>
+          <text class="journey-place" x="735" y="189">Boston</text>
+          <text class="journey-detail" x="735" y="207">Boston University · 2025–present</text>
+
+        </g>
 
       </svg>
 
-      <div class="journey-caption">
-        <div>
-          <b>TSN</b>
-          <span>Tianjin, China · 天津</span>
-          <span>Home</span>
-        </div>
-        <div>
-          <b>YVR</b>
-          <span>Vancouver, Canada</span>
-          <span>UBC · 2019–2023</span>
-        </div>
-        <div>
-          <b>ATL</b>
-          <span>Atlanta, USA</span>
-          <span>Emory · 2023–2025</span>
-        </div>
-        <div>
-          <b>BOS</b>
-          <span>Boston, USA</span>
-          <span>Boston University · 2025–present</span>
-        </div>
-      </div>
+      <p class="journey-note">
+        From home in Tianjin to UBC, Emory, and my current chapter in Boston.
+      </p>
 
     </div>
 
@@ -2369,7 +2341,7 @@ const io = new IntersectionObserver(
 
 document
   .querySelectorAll(
-    ".rise, .plotwrap, .skillswrap, .hero, .journey-map"
+    ".rise, .plotwrap, .skillswrap, .hero, .journey-story"
   )
   .forEach(el => io.observe(el));
 
