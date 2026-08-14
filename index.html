@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300&display=swap" rel="stylesheet">
 
 <style>
 
@@ -772,6 +772,38 @@ footer{
   stroke-width:1.6;
 }
 
+
+/* institution marks along the route */
+
+.journey-badge{
+  fill:#fff;
+  stroke:var(--hema);
+  stroke-width:2.4;
+}
+
+.journey-badge-ring{
+  fill:none;
+  stroke:var(--hema-soft);
+  stroke-width:1;
+  opacity:.5;
+}
+
+.journey-badge-text{
+  font-family:"IBM Plex Mono",monospace;
+  font-weight:600;
+  fill:var(--hema);
+  letter-spacing:.06em;
+  text-anchor:middle;
+}
+
+.journey-badge.is-now{
+  stroke:var(--eosin);
+}
+
+.journey-badge-text.is-now{
+  fill:var(--eosin-ink);
+}
+
 .journey-code{
   font-family:"IBM Plex Mono",monospace;
   font-size:13px;
@@ -814,17 +846,17 @@ footer{
 @keyframes journeyDestinationPulse{
   0%{
     opacity:.6;
-    transform:scale(.8);
+    transform:scale(.85);
     transform-origin:center;
   }
   70%{
     opacity:0;
-    transform:scale(1.45);
+    transform:scale(1.4);
     transform-origin:center;
   }
   100%{
     opacity:0;
-    transform:scale(1.45);
+    transform:scale(1.4);
     transform-origin:center;
   }
 }
@@ -1114,7 +1146,7 @@ footer{
       <svg
         viewBox="0 0 1000 430"
         role="img"
-        aria-label="Personal journey from Tianjin to Vancouver to Atlanta, ending in Boston"
+        aria-label="Journey from Tianjin to the University of British Columbia in Vancouver, then Emory University in Atlanta, and now Boston University"
       >
 
         <!-- dotted hand-drawn route ending at Boston -->
@@ -1132,7 +1164,7 @@ footer{
           "
         ></path>
 
-        <!-- TSN -->
+        <!-- TSN · home -->
         <g class="journey-stop stop-1">
 
           <circle
@@ -1163,45 +1195,19 @@ footer{
         </g>
 
 
-        <!-- YVR -->
+        <!-- YVR · University of British Columbia -->
         <g class="journey-stop stop-2">
 
-          <!-- bachelor's degree graduation cap -->
-          <path
-            class="journey-icon-line"
-            d="
-              M270 96
-              L301 82
-              L332 96
-              L301 110
-              Z
-            "
-          ></path>
-
-          <path
-            class="journey-icon-line"
-            d="
-              M280 101
-              L280 116
-              Q301 128 322 116
-              L322 101
-            "
-          ></path>
-
-          <path
-            class="journey-icon-line"
-            d="
-              M332 96
-              L332 116
-            "
-          ></path>
-
-          <circle
-            class="journey-icon-accent"
-            cx="332"
-            cy="119"
-            r="3"
-          ></circle>
+          <!-- To use the official logo, replace the circle+text below with:
+               <image href="logos/ubc.png" x="277" y="76" width="48" height="48"
+                      preserveAspectRatio="xMidYMid meet"></image> -->
+          <circle class="journey-badge" cx="301" cy="100" r="24"></circle>
+          <circle class="journey-badge-ring" cx="301" cy="100" r="19"></circle>
+          <text
+            class="journey-badge-text"
+            x="301" y="100" dy=".36em"
+            style="font-size:13px"
+          >UBC</text>
 
           <text class="journey-code" x="270" y="153">YVR</text>
           <text class="journey-place" x="270" y="172">Vancouver, Canada</text>
@@ -1210,45 +1216,19 @@ footer{
         </g>
 
 
-        <!-- ATL -->
+        <!-- ATL · Emory University -->
         <g class="journey-stop stop-3">
 
-          <!-- graduate degree cap -->
-          <path
-            class="journey-icon-line"
-            d="
-              M520 300
-              L550 287
-              L580 300
-              L550 313
-              Z
-            "
-          ></path>
-
-          <path
-            class="journey-icon-line"
-            d="
-              M529 305
-              L529 319
-              Q550 331 571 319
-              L571 305
-            "
-          ></path>
-
-          <path
-            class="journey-icon-line"
-            d="
-              M580 300
-              L580 320
-            "
-          ></path>
-
-          <circle
-            class="journey-icon-accent"
-            cx="580"
-            cy="323"
-            r="3"
-          ></circle>
+          <!-- To use the official logo, replace the circle+text below with:
+               <image href="logos/emory.png" x="526" y="276" width="48" height="48"
+                      preserveAspectRatio="xMidYMid meet"></image> -->
+          <circle class="journey-badge" cx="550" cy="300" r="24"></circle>
+          <circle class="journey-badge-ring" cx="550" cy="300" r="19"></circle>
+          <text
+            class="journey-badge-text"
+            x="550" y="300" dy=".36em"
+            style="font-size:9.5px"
+          >EMORY</text>
 
           <text class="journey-code" x="500" y="360">ATL</text>
           <text class="journey-place" x="500" y="379">Atlanta, USA</text>
@@ -1257,55 +1237,31 @@ footer{
         </g>
 
 
-        <!-- BOS: final destination / current chapter -->
+        <!-- BOS · Boston University, current chapter -->
         <g class="journey-stop stop-4">
 
           <circle
             class="journey-destination-ring"
             cx="774"
-            cy="102"
-            r="36"
+            cy="100"
+            r="40"
           ></circle>
 
-          <!-- final destination pin -->
-          <path
-            class="journey-icon-accent"
-            d="
-              M774 67
-              C754 67 741 82 741 99
-              C741 121 774 146 774 146
-              C774 146 807 121 807 99
-              C807 82 794 67 774 67
-              Z
-            "
-          ></path>
+          <!-- To use the official logo, replace the circle+text below with:
+               <image href="logos/bu.png" x="750" y="76" width="48" height="48"
+                      preserveAspectRatio="xMidYMid meet"></image> -->
+          <circle class="journey-badge is-now" cx="774" cy="100" r="26"></circle>
+          <circle class="journey-badge-ring" cx="774" cy="100" r="21"></circle>
+          <text
+            class="journey-badge-text is-now"
+            x="774" y="100" dy=".36em"
+            style="font-size:15px"
+          >BU</text>
 
-          <circle
-            class="journey-icon-box"
-            cx="774"
-            cy="99"
-            r="11"
-          ></circle>
-
-          <!-- small research mark inside pin -->
-          <path
-            class="journey-icon-line"
-            d="
-              M769 103
-              L769 95
-              M769 103
-              L780 103
-              M771 100
-              L774 97
-              L777 99
-              L780 94
-            "
-          ></path>
-
-          <text class="journey-final-label" x="728" y="48">FINAL DESTINATION</text>
-          <text class="journey-code" x="735" y="170">BOS</text>
-          <text class="journey-place" x="735" y="189">Boston, USA</text>
-          <text class="journey-detail" x="735" y="207">Boston University · 2025–present</text>
+          <text class="journey-final-label" x="731" y="48">CURRENT CHAPTER</text>
+          <text class="journey-code" x="735" y="162">BOS</text>
+          <text class="journey-place" x="735" y="181">Boston, USA</text>
+          <text class="journey-detail" x="735" y="199">Boston University · 2025–present</text>
 
         </g>
 
@@ -1344,34 +1300,34 @@ footer{
     <div class="focus rise">
 
       <div>
-  <div class="stain" aria-hidden="true"></div>
-  <h3>How do biology and environment shape cancer?</h3>
-  <p>
-    Using molecular, clinical, and epidemiologic data to understand how
-    metabolic health, medications, and other exposures relate to tumor
-    biology and the immune microenvironment.
-  </p>
-</div>
+        <div class="stain" aria-hidden="true"></div>
+        <h3>How do biology and environment shape cancer?</h3>
+        <p>
+          Using molecular, clinical, and epidemiologic data to understand how
+          metabolic health, medications, and other exposures relate to tumor
+          biology and the immune microenvironment.
+        </p>
+      </div>
 
-<div>
-  <div class="stain" aria-hidden="true"></div>
-  <h3>Can we better predict who is at risk?</h3>
-  <p>
-    Combining genetic, molecular, and epidemiologic information to improve
-    cancer risk prediction and identify meaningful differences across
-    populations.
-  </p>
-</div>
+      <div>
+        <div class="stain" aria-hidden="true"></div>
+        <h3>Can we better predict who is at risk?</h3>
+        <p>
+          Combining genetic, molecular, and epidemiologic information to improve
+          cancer risk prediction and identify meaningful differences across
+          populations.
+        </p>
+      </div>
 
-<div>
-  <div class="stain" aria-hidden="true"></div>
-  <h3>How can we make complex health data useful?</h3>
-  <p>
-    Developing and applying statistical and computational methods to turn
-    high-dimensional, longitudinal, and multi-source biomedical data into
-    interpretable evidence.
-  </p>
-</div>
+      <div>
+        <div class="stain" aria-hidden="true"></div>
+        <h3>How can we make complex health data useful?</h3>
+        <p>
+          Developing and applying statistical and computational methods to turn
+          high-dimensional, longitudinal, and multi-source biomedical data into
+          interpretable evidence.
+        </p>
+      </div>
 
     </div>
 
@@ -1887,12 +1843,12 @@ footer{
       <article class="item rise">
 
         <div class="side">
-  MSPH Capstone Project
-  <br>
-  Emory University
-  <br>
-  2023 &ndash; 2025
-</div>
+          MSPH Capstone Project
+          <br>
+          Emory University
+          <br>
+          2023 &ndash; 2025
+        </div>
 
         <div>
 
@@ -2266,7 +2222,6 @@ footer{
         kellycytbc@gmail.com
       </a>
 
-      
       <a
         href="https://www.linkedin.com/in/kelly-chen-1757b41b1/"
         target="_blank"
@@ -2283,9 +2238,13 @@ footer{
         GitHub
       </a>
 
-      <a href="Yantong_Chen_Resume.pdf?v=20260812" target="_blank" rel="noopener noreferrer">
-  Download CV
-</a>
+      <a
+        href="Yantong_Chen_Resume.pdf?v=20260812"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Download CV
+      </a>
 
     </div>
 
