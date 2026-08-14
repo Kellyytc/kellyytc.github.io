@@ -772,9 +772,7 @@ footer{
   stroke-width:1.6;
 }
 
-
-/* institution marks along the route */
-
+/* institution marks on the route */
 .journey-badge{
   fill:#fff;
   stroke:var(--hema);
@@ -785,7 +783,7 @@ footer{
   fill:none;
   stroke:var(--hema-soft);
   stroke-width:1;
-  opacity:.5;
+  opacity:.55;
 }
 
 .journey-badge-text{
@@ -846,17 +844,17 @@ footer{
 @keyframes journeyDestinationPulse{
   0%{
     opacity:.6;
-    transform:scale(.85);
+    transform:scale(.8);
     transform-origin:center;
   }
   70%{
     opacity:0;
-    transform:scale(1.4);
+    transform:scale(1.45);
     transform-origin:center;
   }
   100%{
     opacity:0;
-    transform:scale(1.4);
+    transform:scale(1.45);
     transform-origin:center;
   }
 }
@@ -1146,7 +1144,7 @@ footer{
       <svg
         viewBox="0 0 1000 430"
         role="img"
-        aria-label="Journey from Tianjin to the University of British Columbia in Vancouver, then Emory University in Atlanta, and now Boston University"
+        aria-label="Personal journey from Tianjin to the University of British Columbia in Vancouver, to Emory University in Atlanta, ending at Boston University"
       >
 
         <!-- dotted hand-drawn route ending at Boston -->
@@ -1164,7 +1162,7 @@ footer{
           "
         ></path>
 
-        <!-- TSN · home -->
+        <!-- TSN -->
         <g class="journey-stop stop-1">
 
           <circle
@@ -1198,14 +1196,18 @@ footer{
         <!-- YVR · University of British Columbia -->
         <g class="journey-stop stop-2">
 
-          <!-- To use the official logo, replace the circle+text below with:
-               <image href="logos/ubc.png" x="277" y="76" width="48" height="48"
-                      preserveAspectRatio="xMidYMid meet"></image> -->
+          <!--
+            To use the official logo instead, replace the two elements below with:
+            <image href="logos/ubc.png" x="277" y="76" width="48" height="48"
+                   preserveAspectRatio="xMidYMid meet"></image>
+          -->
           <circle class="journey-badge" cx="301" cy="100" r="24"></circle>
           <circle class="journey-badge-ring" cx="301" cy="100" r="19"></circle>
           <text
             class="journey-badge-text"
-            x="301" y="100" dy=".36em"
+            x="301"
+            y="100"
+            dy=".36em"
             style="font-size:13px"
           >UBC</text>
 
@@ -1219,14 +1221,18 @@ footer{
         <!-- ATL · Emory University -->
         <g class="journey-stop stop-3">
 
-          <!-- To use the official logo, replace the circle+text below with:
-               <image href="logos/emory.png" x="526" y="276" width="48" height="48"
-                      preserveAspectRatio="xMidYMid meet"></image> -->
+          <!--
+            To use the official logo instead, replace the two elements below with:
+            <image href="logos/emory.png" x="526" y="276" width="48" height="48"
+                   preserveAspectRatio="xMidYMid meet"></image>
+          -->
           <circle class="journey-badge" cx="550" cy="300" r="24"></circle>
           <circle class="journey-badge-ring" cx="550" cy="300" r="19"></circle>
           <text
             class="journey-badge-text"
-            x="550" y="300" dy=".36em"
+            x="550"
+            y="300"
+            dy=".36em"
             style="font-size:9.5px"
           >EMORY</text>
 
@@ -1237,7 +1243,7 @@ footer{
         </g>
 
 
-        <!-- BOS · Boston University, current chapter -->
+        <!-- BOS · Boston University — current chapter -->
         <g class="journey-stop stop-4">
 
           <circle
@@ -1247,21 +1253,25 @@ footer{
             r="40"
           ></circle>
 
-          <!-- To use the official logo, replace the circle+text below with:
-               <image href="logos/bu.png" x="750" y="76" width="48" height="48"
-                      preserveAspectRatio="xMidYMid meet"></image> -->
+          <!--
+            To use the official logo instead, replace the two elements below with:
+            <image href="logos/bu.png" x="750" y="76" width="48" height="48"
+                   preserveAspectRatio="xMidYMid meet"></image>
+          -->
           <circle class="journey-badge is-now" cx="774" cy="100" r="26"></circle>
           <circle class="journey-badge-ring" cx="774" cy="100" r="21"></circle>
           <text
             class="journey-badge-text is-now"
-            x="774" y="100" dy=".36em"
+            x="774"
+            y="100"
+            dy=".36em"
             style="font-size:15px"
           >BU</text>
 
-          <text class="journey-final-label" x="731" y="48">CURRENT CHAPTER</text>
-          <text class="journey-code" x="735" y="162">BOS</text>
-          <text class="journey-place" x="735" y="181">Boston, USA</text>
-          <text class="journey-detail" x="735" y="199">Boston University · 2025–present</text>
+          <text class="journey-final-label" x="728" y="48">CURRENT CHAPTER</text>
+          <text class="journey-code" x="735" y="160">BOS</text>
+          <text class="journey-place" x="735" y="179">Boston, USA</text>
+          <text class="journey-detail" x="735" y="197">Boston University · 2025–present</text>
 
         </g>
 
@@ -1300,34 +1310,34 @@ footer{
     <div class="focus rise">
 
       <div>
-        <div class="stain" aria-hidden="true"></div>
-        <h3>How do biology and environment shape cancer?</h3>
-        <p>
-          Using molecular, clinical, and epidemiologic data to understand how
-          metabolic health, medications, and other exposures relate to tumor
-          biology and the immune microenvironment.
-        </p>
-      </div>
+  <div class="stain" aria-hidden="true"></div>
+  <h3>How do biology and environment shape cancer?</h3>
+  <p>
+    Using molecular, clinical, and epidemiologic data to understand how
+    metabolic health, medications, and other exposures relate to tumor
+    biology and the immune microenvironment.
+  </p>
+</div>
 
-      <div>
-        <div class="stain" aria-hidden="true"></div>
-        <h3>Can we better predict who is at risk?</h3>
-        <p>
-          Combining genetic, molecular, and epidemiologic information to improve
-          cancer risk prediction and identify meaningful differences across
-          populations.
-        </p>
-      </div>
+<div>
+  <div class="stain" aria-hidden="true"></div>
+  <h3>Can we better predict who is at risk?</h3>
+  <p>
+    Combining genetic, molecular, and epidemiologic information to improve
+    cancer risk prediction and identify meaningful differences across
+    populations.
+  </p>
+</div>
 
-      <div>
-        <div class="stain" aria-hidden="true"></div>
-        <h3>How can we make complex health data useful?</h3>
-        <p>
-          Developing and applying statistical and computational methods to turn
-          high-dimensional, longitudinal, and multi-source biomedical data into
-          interpretable evidence.
-        </p>
-      </div>
+<div>
+  <div class="stain" aria-hidden="true"></div>
+  <h3>How can we make complex health data useful?</h3>
+  <p>
+    Developing and applying statistical and computational methods to turn
+    high-dimensional, longitudinal, and multi-source biomedical data into
+    interpretable evidence.
+  </p>
+</div>
 
     </div>
 
@@ -1843,12 +1853,12 @@ footer{
       <article class="item rise">
 
         <div class="side">
-          MSPH Capstone Project
-          <br>
-          Emory University
-          <br>
-          2023 &ndash; 2025
-        </div>
+  MSPH Capstone Project
+  <br>
+  Emory University
+  <br>
+  2023 &ndash; 2025
+</div>
 
         <div>
 
@@ -2222,6 +2232,7 @@ footer{
         kellycytbc@gmail.com
       </a>
 
+      
       <a
         href="https://www.linkedin.com/in/kelly-chen-1757b41b1/"
         target="_blank"
@@ -2238,13 +2249,9 @@ footer{
         GitHub
       </a>
 
-      <a
-        href="Yantong_Chen_Resume.pdf?v=20260812"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Download CV
-      </a>
+      <a href="Yantong_Chen_Resume.pdf?v=20260812" target="_blank" rel="noopener noreferrer">
+  Download CV
+</a>
 
     </div>
 
