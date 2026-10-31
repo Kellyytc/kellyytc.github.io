@@ -588,10 +588,19 @@ a:hover{
 
 /* ---------- publication ---------- */
 
+.pubs{
+  display:grid;
+  gap:30px;
+}
+
 .pub{
   border-left:2px solid var(--eosin);
   padding:4px 0 4px 22px;
   max-width:72ch;
+}
+
+.pub + .pub{
+  border-left-color:var(--hema-soft);
 }
 
 .pub .title{
@@ -813,6 +822,8 @@ footer{
   stroke:var(--eosin);
   stroke-width:2;
   opacity:0;
+  transform-box:fill-box;
+  transform-origin:center;
 }
 
 .journey-story.in .journey-destination-ring{
@@ -823,18 +834,115 @@ footer{
   0%{
     opacity:.6;
     transform:scale(.85);
-    transform-origin:center;
   }
   70%{
     opacity:0;
     transform:scale(1.35);
-    transform-origin:center;
   }
   100%{
     opacity:0;
     transform:scale(1.35);
-    transform-origin:center;
   }
+}
+
+.journey-list{
+  display:none;
+}
+
+.journey-list ol{
+  list-style:none;
+  margin:0;
+  padding:0;
+  position:relative;
+}
+
+.journey-list li{
+  position:relative;
+  display:grid;
+  grid-template-columns:52px 1fr;
+  gap:14px;
+  align-items:start;
+  padding:0 0 26px 0;
+}
+
+.journey-list li:last-child{
+  padding-bottom:0;
+}
+
+/* dotted spine echoing the map's route */
+.journey-list li:not(:last-child)::before{
+  content:"";
+  position:absolute;
+  left:25px;
+  top:56px;
+  bottom:4px;
+  border-left:3px dotted var(--hema-soft);
+  opacity:.75;
+}
+
+.journey-list .jl-mark{
+  width:52px;
+  height:52px;
+  border-radius:10px;
+  border:1.5px solid var(--rule);
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  position:relative;
+  z-index:1;
+}
+
+.journey-list .jl-mark.is-now{
+  border-color:var(--eosin);
+  border-width:2px;
+}
+
+.journey-list .jl-mark.is-home{
+  border-color:var(--eosin);
+  background:var(--eosin-wash);
+}
+
+.journey-list .jl-mark img{
+  width:40px;
+  height:40px;
+  object-fit:contain;
+  display:block;
+}
+
+.journey-list .jl-code{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:12.5px;
+  font-weight:600;
+  letter-spacing:.05em;
+  display:block;
+  line-height:1.3;
+}
+
+.journey-list .jl-place{
+  font-size:14px;
+  display:block;
+  line-height:1.4;
+}
+
+.journey-list .jl-detail{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:11px;
+  color:var(--hema-soft);
+  display:block;
+  line-height:1.5;
+  margin-top:2px;
+}
+
+.journey-list .jl-now{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:9px;
+  font-weight:500;
+  letter-spacing:.12em;
+  color:var(--eosin-ink);
+  display:block;
+  margin-bottom:3px;
 }
 
 .journey-note{
@@ -849,8 +957,16 @@ footer{
 @media (max-width:700px){
 
   .journey-story{
-    padding:22px 12px 20px;
+    padding:24px 18px 22px;
     background-size:14px 14px;
+  }
+
+  .journey-story > svg{
+    display:none;
+  }
+
+  .journey-list{
+    display:block;
   }
 
   .journey-code{
@@ -1066,7 +1182,7 @@ footer{
       <div class="rule" aria-hidden="true"></div>
 
       <p class="lede">
-        I'm a research data analyst at the Slone Epidemiology Center, Boston University, where I work on the Black Women's Health Study (BWHS) — analyzing RNA-seq, tumor pathology, and tissue microarray data to understand how metabolic conditions and medication use shape breast cancer biology and the tumor immune microenvironment. I have also worked on ovarian cancer risk prediction using polygenic risk scores (PRS) and epidemiologic factors in the PLCO and CPS-II cohorts.
+        I'm a research data analyst at the Slone Epidemiology Center, Boston University, where I work on the Black Women's Health Study (BWHS) — analyzing RNA-seq, tumor pathology, and tissue microarray data to understand how metabolic conditions and medication use shape breast cancer biology and the tumor immune microenvironment, and building the harmonized datasets and tooling the study runs on. I also work across the CBCS and WCHS cohorts on immune infiltration, and have studied ovarian cancer risk prediction using polygenic risk scores (PRS) and epidemiologic factors in the PLCO and CPS-II cohorts.
       </p>
 
       <div class="meta">
@@ -1177,22 +1293,22 @@ footer{
 
           <rect
             class="journey-plate"
-            x="269" y="68"
-            width="64" height="64"
-            rx="8"
+            x="259" y="56"
+            width="84" height="84"
+            rx="10"
           ></rect>
 
           <image
             href="ubc.png?v=2"
             xlink:href="ubc.png?v=2"
-            x="276" y="75"
-            width="50" height="50"
+            x="269" y="66"
+            width="64" height="64"
             preserveAspectRatio="xMidYMid meet"
           ></image>
 
-          <text class="journey-code" x="270" y="153">YVR</text>
-          <text class="journey-place" x="270" y="172">Vancouver, Canada</text>
-          <text class="journey-detail" x="270" y="190">UBC · BSc Mathematics · 2019–2023</text>
+          <text class="journey-code" x="259" y="167">YVR</text>
+          <text class="journey-place" x="259" y="186">Vancouver, Canada</text>
+          <text class="journey-detail" x="259" y="204">UBC · BSc Mathematics · 2019–2023</text>
 
         </g>
 
@@ -1202,22 +1318,22 @@ footer{
 
           <rect
             class="journey-plate"
-            x="518" y="268"
-            width="64" height="64"
-            rx="8"
+            x="508" y="262"
+            width="84" height="84"
+            rx="10"
           ></rect>
 
           <image
             href="emory.png?v=2"
             xlink:href="emory.png?v=2"
-            x="525" y="275"
-            width="50" height="50"
+            x="518" y="272"
+            width="64" height="64"
             preserveAspectRatio="xMidYMid meet"
           ></image>
 
-          <text class="journey-code" x="500" y="360">ATL</text>
-          <text class="journey-place" x="500" y="379">Atlanta, USA</text>
-          <text class="journey-detail" x="500" y="397">Emory · MSPH Biostatistics · 2023–2025</text>
+          <text class="journey-code" x="508" y="372">ATL</text>
+          <text class="journey-place" x="508" y="391">Atlanta, USA</text>
+          <text class="journey-detail" x="508" y="409">Emory · MSPH Biostatistics · 2023–2025</text>
 
         </g>
 
@@ -1227,34 +1343,91 @@ footer{
 
           <rect
             class="journey-destination-ring"
-            x="732" y="58"
-            width="84" height="84"
-            rx="12"
+            x="722" y="44"
+            width="108" height="108"
+            rx="14"
           ></rect>
 
           <rect
             class="journey-plate is-now"
-            x="740" y="66"
-            width="68" height="68"
-            rx="8"
+            x="732" y="54"
+            width="88" height="88"
+            rx="10"
           ></rect>
 
           <image
             href="bu.png?v=3"
             xlink:href="bu.png?v=3"
-            x="748" y="74"
-            width="52" height="52"
+            x="742" y="64"
+            width="68" height="68"
             preserveAspectRatio="xMidYMid meet"
           ></image>
 
-          <text class="journey-final-label" x="734" y="46">CURRENT CHAPTER</text>
-          <text class="journey-code" x="740" y="164">BOS</text>
-          <text class="journey-place" x="740" y="183">Boston, USA</text>
-          <text class="journey-detail" x="740" y="201">Boston University · 2025–present</text>
+          <text class="journey-final-label" x="732" y="36">CURRENT CHAPTER</text>
+          <text class="journey-code" x="732" y="176">BOS</text>
+          <text class="journey-place" x="732" y="195">Boston, USA</text>
+          <text class="journey-detail" x="732" y="213">Boston University · 2025–present</text>
 
         </g>
 
       </svg>
+
+      <div class="journey-list">
+        <ol>
+
+          <li>
+            <span class="jl-mark is-home" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none"
+                   stroke="#A83A66" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 11 12 4l8 7"></path>
+                <path d="M6 10v9h12v-9"></path>
+                <path d="M10 19v-5h4v5"></path>
+              </svg>
+            </span>
+            <span>
+              <span class="jl-code">TSN</span>
+              <span class="jl-place">Tianjin, China &middot; &#22825;&#27941;</span>
+              <span class="jl-detail">Home</span>
+            </span>
+          </li>
+
+          <li>
+            <span class="jl-mark">
+              <img src="ubc.png?v=2" alt="University of British Columbia">
+            </span>
+            <span>
+              <span class="jl-code">YVR</span>
+              <span class="jl-place">Vancouver, Canada</span>
+              <span class="jl-detail">UBC &middot; BSc Mathematics &middot; 2019&ndash;2023</span>
+            </span>
+          </li>
+
+          <li>
+            <span class="jl-mark">
+              <img src="emory.png?v=2" alt="Emory University">
+            </span>
+            <span>
+              <span class="jl-code">ATL</span>
+              <span class="jl-place">Atlanta, USA</span>
+              <span class="jl-detail">Emory &middot; MSPH Biostatistics &middot; 2023&ndash;2025</span>
+            </span>
+          </li>
+
+          <li>
+            <span class="jl-mark is-now">
+              <img src="bu.png?v=3" alt="Boston University">
+            </span>
+            <span>
+              <span class="jl-now">CURRENT CHAPTER</span>
+              <span class="jl-code">BOS</span>
+              <span class="jl-place">Boston, USA</span>
+              <span class="jl-detail">Boston University &middot; 2025&ndash;present</span>
+            </span>
+          </li>
+
+        </ol>
+      </div>
 
       <p class="journey-note">
         From home in Tianjin to UBC, Emory, and my current chapter in Boston.
@@ -1700,22 +1873,25 @@ footer{
         <div>
 
           <h3>
-            Transcriptomic signatures of obesity, diabetes, and antihypertensive use in breast cancer
+            Obesity, diabetes, and breast cancer gene expression
           </h3>
 
           <p>
-            RNA-seq analysis of breast cancer cases in the Black Women's
-            Health Study. Ran DESeq2 differential expression, Reactome GSEA,
-            ssGSEA, and CIBERSORTx immune deconvolution, with stratification
-            by ER status and molecular characteristics and extensive
-            evaluation of sequencing batch effects.
+            Built reproducible HPC, R, and shell workflows for RNA-seq
+            preprocessing, alignment, gene count generation, differential
+            expression, pathway analysis, and immune profiling &mdash; first
+            across 418 BWHS breast cancer cases, then extended to 667 after
+            integrating a second sequencing batch. A large share of the work
+            was quality control: assessing batch effects, testing approaches
+            to reduce their influence, and handling imbalance in metformin
+            exposure groups.
           </p>
 
           <div class="tags">
+            <span class="tag">RNA-seq</span>
             <span class="tag">DESeq2</span>
-            <span class="tag">GSEA</span>
-            <span class="tag">CIBERSORTx</span>
-            <span class="tag">Bioconductor</span>
+            <span class="tag">HPC</span>
+            <span class="tag">batch effects</span>
             <span class="tag">shell</span>
           </div>
 
@@ -1736,20 +1912,24 @@ footer{
         <div>
 
           <h3>
-            PAM50 subtypes against tumor and epidemiologic characteristics
+            Hypertension and antihypertensive medication use in tumor gene expression
           </h3>
 
           <p>
-            Integrated PAM50 classification, P53 mutation status, CD8+
-            staining, pathology, and questionnaire data to run immune-subtype
-            classification and stratified association analyses across ER and
-            tumor subgroups.
+            Constructed pre-diagnosis exposure variables for hypertension
+            history, current and ever ARB use, and other antihypertensive
+            medications, then linked them to BWHS clinical and RNA-seq data.
+            Ran DESeq2 differential expression with demographic and clinical
+            adjustment, ssGSEA and Reactome pathway analysis, and CIBERSORTx
+            immune profiling &mdash; overall and stratified by ER status to
+            look for heterogeneity by subtype.
           </p>
 
           <div class="tags">
-            <span class="tag">PAM50</span>
-            <span class="tag">immune subtyping</span>
-            <span class="tag">stratified analysis</span>
+            <span class="tag">DESeq2</span>
+            <span class="tag">ssGSEA</span>
+            <span class="tag">Reactome</span>
+            <span class="tag">CIBERSORTx</span>
           </div>
 
         </div>
@@ -1769,22 +1949,205 @@ footer{
         <div>
 
           <h3>
-            Spatial tissue microarray workflow &amp; a Shiny platform for BWHS
+            Molecular subtyping and immune profiling of breast tumors
           </h3>
 
           <p>
-            Built a workflow to quantify and visualize immune and tumor-cell
-            markers across epithelial and stromal compartments. Separately,
-            developed an interactive R Shiny explorer over the BWHS database
-            so the research team can inspect variable distributions,
-            participant-level and longitudinal records, and export custom
-            subsets.
+            Integrated PAM50 intrinsic subtypes, P53 mutation status,
+            immunohistochemistry measurements, and tumor pathology variables
+            into unified analysis datasets. Applied consensus clustering to
+            identify immune subtypes and built reproducible R workflows for
+            stratified odds-ratio analyses across ER status and tumor
+            characteristics.
+          </p>
+
+          <div class="tags">
+            <span class="tag">PAM50</span>
+            <span class="tag">consensus clustering</span>
+            <span class="tag">immune subtyping</span>
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <article class="item rise">
+
+        <div class="side">
+          BCRF &middot; CBCS, WCHS &amp; BWHS
+          <br>
+          2025 &ndash; present
+        </div>
+
+        <div>
+
+          <h3>
+            Social determinants, tumor features, and CD8 infiltration across three cohorts
+          </h3>
+
+          <p>
+            Prepared linked participant-, TMA core-, and cell-level datasets
+            with accompanying data dictionaries, then ran pooled and
+            site-specific analyses of social determinants and tumor features
+            against CD8 infiltration &mdash; comparing median and
+            upper-quartile cutoffs alongside several cell-density
+            calculation methods. Built the slides and plots presented at the
+            funder meeting.
+          </p>
+
+          <div class="tags">
+            <span class="tag">multi-cohort</span>
+            <span class="tag">CD8 infiltration</span>
+            <span class="tag">TMA</span>
+            <span class="tag">data dictionaries</span>
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <article class="item rise">
+
+        <div class="side">
+          Slone Epidemiology Center
+          <br>
+          2025 &ndash; present
+        </div>
+
+        <div>
+
+          <h3>
+            GiottoTMA development and T-cell panel feasibility
+          </h3>
+
+          <p>
+            Collaborated on developing and evaluating the GiottoTMA R package
+            for analysis and quality assessment of tissue microarray imaging
+            data. Applied the workflow to the BWHS T-cell panel, organized
+            cell- and core-level imaging data, and ran quality-control and
+            concordance assessments across cores and plates to test
+            feasibility for multiplex immune-marker data.
+          </p>
+
+          <div class="tags">
+            <span class="tag">GiottoTMA</span>
+            <span class="tag">R package</span>
+            <span class="tag">multiplex imaging</span>
+            <span class="tag">QC</span>
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <article class="item rise">
+
+        <div class="side">
+          Slone Epidemiology Center
+          <br>
+          2025 &ndash; present
+        </div>
+
+        <div>
+
+          <h3>
+            An interactive data exploration platform for BWHS
+          </h3>
+
+          <p>
+            Designed and built an R Shiny platform so the research team can
+            examine variable distributions and summary statistics, search
+            participant-level records, review longitudinal questionnaire
+            data, and generate custom subsets &mdash; without filing a data
+            request or writing code each time. Backed by workflows that
+            harmonize questionnaire variables across survey cycles.
           </p>
 
           <div class="tags">
             <span class="tag">R Shiny</span>
-            <span class="tag">spatial analysis</span>
+            <span class="tag">longitudinal data</span>
+            <span class="tag">self-service tooling</span>
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <article class="item rise">
+
+        <div class="side">
+          Slone Epidemiology Center
+          <br>
+          2025 &ndash; present
+        </div>
+
+        <div>
+
+          <h3>
+            Data stewardship for the Black Women's Health Study
+          </h3>
+
+          <p>
+            A standing role preparing analysis-ready datasets for
+            investigators across the study. Harmonized the 2017 and 2019
+            questionnaire waves in SAS; mapped a 219-gene panel from Entrez
+            identifiers and symbols to Ensembl IDs and delivered
+            VST-normalized expression linked to participant characteristics;
+            compiled neighborhood socioeconomic measures &mdash; Yost index,
+            Neighborhood Deprivation Index, Social Vulnerability Index
+            &mdash; alongside healthcare access, screening, and tumor
+            variables; linked TMA metadata to participants through AMBER IDs;
+            and assembled compartment-specific immune cell counts and tissue
+            areas for thesis work.
+          </p>
+
+          <div class="tags">
+            <span class="tag">SAS</span>
             <span class="tag">data harmonization</span>
+            <span class="tag">record linkage</span>
+            <span class="tag">DESeq2 VST</span>
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <article class="item rise">
+
+        <div class="side">
+          Slone Epidemiology Center
+          <br>
+          2025 &ndash; present
+        </div>
+
+        <div>
+
+          <h3>
+            PFAS concentrations and breast cancer risk &mdash; results visualization
+          </h3>
+
+          <p>
+            Wrote R scripts to pull odds ratios and confidence intervals out
+            of existing Word tables, validate the extracted estimates, and
+            generate forest plots for quartile-4-versus-1 and continuous
+            exposure associations. Produced overall and ER-specific figures
+            on consistent scales across five chemicals.
+          </p>
+
+          <div class="tags">
+            <span class="tag">R</span>
+            <span class="tag">forest plots</span>
+            <span class="tag">results extraction</span>
           </div>
 
         </div>
@@ -2125,7 +2488,7 @@ footer{
     <div class="band-head rise">
 
       <p class="eyebrow">
-        Publication
+        Publications &amp; abstracts
       </p>
 
       <h2>
@@ -2135,52 +2498,83 @@ footer{
     </div>
 
 
-    <div class="pub rise">
+    <div class="pubs">
 
-      <p class="title">
-        Digital Health Innovations to Promote Physical Activities in Patients with Cancer
-      </p>
+      <div class="pub rise">
 
-      <p class="cite">
+        <p class="title">
+          Obesity and breast cancer gene expression among US Black women
+        </p>
 
-        Albrecht T,
-        <strong>Chen Y</strong>,
-        Allen D,
-        Pastva A,
-        Tian Z,
-        Lin Y,
-        Bold D,
-        Hu X,
-        Xiao R.
+        <p class="cite">
 
-        <br>
+          <strong>Chen Y</strong>,
+          Zhang C,
+          Wang X,
+          Johnson WE,
+          Palmer JR,
+          Barnard ME.
 
-        Stud Health Technol Inform.
-        2024 Jul 24;315:608–609.
+          <br>
 
-        <br>
+          Cancer Epidemiol Biomarkers Prev.
+          2026;35(10_Suppl):B092.
+          Abstract B092.
 
-        <a
-          href="https://doi.org/10.3233/SHTI240239"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          doi:10.3233/SHTI240239
-        </a>
+        </p>
 
-        ·
+      </div>
 
-        <a
-          href="https://pubmed.ncbi.nlm.nih.gov/39049345/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          PMID 39049345
-        </a>
 
-      </p>
+      <div class="pub rise">
+
+        <p class="title">
+          Digital Health Innovations to Promote Physical Activities in Patients with Cancer
+        </p>
+
+        <p class="cite">
+
+          Albrecht T,
+          <strong>Chen Y</strong>,
+          Allen D,
+          Pastva A,
+          Tian Z,
+          Lin Y,
+          Bold D,
+          Hu X,
+          Xiao R.
+
+          <br>
+
+          Stud Health Technol Inform.
+          2024 Jul 24;315:608&ndash;609.
+
+          <br>
+
+          <a
+            href="https://doi.org/10.3233/SHTI240239"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            doi:10.3233/SHTI240239
+          </a>
+
+          &middot;
+
+          <a
+            href="https://pubmed.ncbi.nlm.nih.gov/39049345/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            PMID 39049345
+          </a>
+
+        </p>
+
+      </div>
 
     </div>
+
 
   </div>
 
@@ -2249,7 +2643,7 @@ footer{
       </span>
 
       <span>
-        Last updated August 2026
+        Last updated October 2026
       </span>
 
     </footer>
